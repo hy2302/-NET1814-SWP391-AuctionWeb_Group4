@@ -1,0 +1,20 @@
+body{
+    font-size: 1.5rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+.Block{
+    width: 30vw;
+    height: 30vw;
+    background-color: black;
+    color:#fff;
+    padding: 1rem;
+}
+.left{
+    float: left;
+    margin-right: 1rem;
+}
+.right{
+    float: right;
+    margin-left: 1rem;
+}
