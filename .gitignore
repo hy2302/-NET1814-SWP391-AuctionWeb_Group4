@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+/nbproject/private/
+/src/workshop2/build/
+/src/workshop2/nbproject/private/
+/src/Auction Management/build/
+/src/Auction Management/nbproject/private/
