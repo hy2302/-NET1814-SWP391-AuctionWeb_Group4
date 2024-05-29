@@ -19,8 +19,6 @@ function App() {
           <h1>Main Page</h1>
           <button onClick={() => navigate('/login')}>Go to Login</button>
           <button onClick={() => navigate('/dashboard')}>Go to Dashboard</button>
-          <button onClick={() => navigate('/users')}>Go to Users</button>
-          <button onClick={() => navigate('/histories')}>Go to Histories</button>
         </div>
       </div>
     </>

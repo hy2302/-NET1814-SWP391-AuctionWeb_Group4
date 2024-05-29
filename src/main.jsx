@@ -1,6 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import App from './App.jsx'
+import Login from './components/Login/Login.jsx'
+import Dashboard from './components/AdminView/Dashboard.jsx'
+import Users from './components/AdminView/Users.jsx'
+import Histories from './components/AdminView/Histories.jsx'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(

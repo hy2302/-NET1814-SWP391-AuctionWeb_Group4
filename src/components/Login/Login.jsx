@@ -6,7 +6,7 @@ import email_icon from '../../assets/email.png';
 import address_icon from '../../assets/address.png';
 import phone_icon from '../../assets/phone.png';
 import './Login.css';
-import Popup from "../popup/Popup";
+import Popup from "../Popup/Popup";
 
 function Login() {
     const navigate = useNavigate();
