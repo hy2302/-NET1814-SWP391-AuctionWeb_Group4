@@ -9,6 +9,9 @@ import '../Layouts/Dashboard.css';
 const Dashboard = () => {
   const navigate = useNavigate();
 
+  const navigateToMain = () => {
+    navigate('/');
+  };
   const navigateToUsers = () => {
     navigate('/users');
   };
@@ -24,6 +27,7 @@ const Dashboard = () => {
         <h1>Dashboard</h1>
         <p>Welcome to the admin dashboard. Here you can manage your application.</p>
         <div className="buttons">
+        <button onClick={navigateToMain} className="nav-button">Main</button>
           <button onClick={navigateToUsers} className="nav-button">Users</button>
           <button onClick={navigateToHistories} className="nav-button">Histories</button>
         </div>
