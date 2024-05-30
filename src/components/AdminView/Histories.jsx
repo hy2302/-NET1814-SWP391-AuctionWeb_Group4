@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Header from '../Header & Footer/Header';
 import Footer from '../Header & Footer/Footer';
 import '../Layouts/Histories.css';
 
+
 const Histories = () => {
+  const navigate = useNavigate();
   // Mock data for transactions and payouts
   const [transactions] = useState([
     { id: 1, date: '2023-01-01', amount: 100, status: 'Completed' },
@@ -20,6 +23,7 @@ const Histories = () => {
       <Header />
       <div className="histories">
         <h1>History</h1>
+        <button className="back-button" onClick={() => navigate('/Dashboard')}>Back to Dashboard</button>
         <div className="history-section">
           <h2>Transaction History</h2>
           <table className="history-table">
