@@ -19,6 +19,8 @@ function App() {
           <h1>Main Page</h1>
           <button onClick={() => navigate('/login')}>Go to Login</button>
           <button onClick={() => navigate('/dashboard')}>Go to Dashboard</button>
+          <button onClick={() => navigate('/policies')}>View Policy</button> 
+          <button onClick={() => navigate('/abouts')}>About Us</button> 
         </div>
       </div>
     </>
