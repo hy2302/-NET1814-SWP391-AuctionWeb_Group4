@@ -2,14 +2,13 @@
 
 * {
     margin: 0;
-    padding: 0;
 }
 
 .login-body {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-height: 100vh;
+    height: 90vh;
     font-size: 19px;
 }
 
