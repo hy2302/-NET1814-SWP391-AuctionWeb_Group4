@@ -8,13 +8,13 @@ const Sidebar = () => {
       <h2>Admin Dashboard</h2>
       <ul>
         <li>
-          <Link to="/users">1. Users</Link>
+          <Link to="/">1. Dashboard</Link>
         </li>
         <li>
-          <Link to="/histories">2. Histories</Link> 
+          <Link to="/users">2. Users</Link>
         </li>
         <li>
-          <Link to="/">Back to Main</Link>
+          <Link to="/histories">3. Histories</Link> 
         </li>
       </ul>
     </div>

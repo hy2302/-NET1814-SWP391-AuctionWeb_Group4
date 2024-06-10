@@ -60,7 +60,7 @@ const Policy = () => {
         </section>
         <button onClick={() => navigate('/')}>Back to Main</button>
       </div>
-     
+      <Footer />
     </div>
   );
 };
