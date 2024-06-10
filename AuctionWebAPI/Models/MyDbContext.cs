@@ -10,5 +10,7 @@ namespace AuctionWebAPI.Models
             
         }
         public DbSet<User> Users { get; set; }
+        public DbSet<UserA> UserAs { get; set; }
+        public DbSet<Jewelry> Jewelries { get; set; }
     }
 }
