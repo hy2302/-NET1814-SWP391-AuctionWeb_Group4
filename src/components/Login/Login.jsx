@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import user_icon from '../../assets/person.png';
-import key_icon from '../../assets/password.png';
-import email_icon from '../../assets/email.png';
-import address_icon from '../../assets/address.png';
-import phone_icon from '../../assets/phone.png';
-import './Login.css';
-import Popup from "../Popup/Popup";
+import React, { useState } from "react"
+import { useNavigate } from 'react-router-dom'
+import user_icon from '../../assets/person.png'
+import key_icon from '../../assets/password.png'
+import email_icon from '../../assets/email.png'
+import address_icon from '../../assets/address.png'
+import phone_icon from '../../assets/phone.png'
+import './Login.css'
+import Popup from "../Popup/Popup"
 
 function Login() {
     const navigate = useNavigate();
@@ -27,7 +27,7 @@ function Login() {
                 <div className="form-wrapper login">
                     <h2>Login</h2>
                     <p>Sign in or create an account</p>
-                    <form action="#" className="login">
+                    <form action="login" className="login">
                         <div className="input-group">
                             <label htmlFor="username">
                                 <img className="img-icon" src={user_icon} alt="User icon"/>
@@ -52,7 +52,7 @@ function Login() {
                         </div>
                         <button type="submit" className="btn">Sign in</button>
                         <div className="terms">
-                            <p>By continuing, you agree to our <a href="#">terms of service</a> and <a href="#">privacy policy.</a></p>
+                            <p>By continuing, you agree to our <a href="#" onClick={() => navigate('/policy')}>terms of service and privacy policy.</a></p>
                         </div>
                     </form>
                 </div>
@@ -60,7 +60,7 @@ function Login() {
                 <div className="form-wrapper signup">
                     <h2>Sign Up</h2>
                     <p>Create an account or sign in</p>
-                    <form action="#" className="signup">
+                    <form action="signup" className="signup">
                         <div className="input-group">
                             <label htmlFor="username">
                                 <img className="img-icon" src={user_icon} alt="User icon"/>
@@ -96,7 +96,7 @@ function Login() {
                         </div>
                         <button type="submit" className="btn">Create account</button>
                         <div className="terms">
-                            <p>By continuing, you agree to our <a href="#">terms of service</a> and <a href="#">privacy policy.</a></p>
+                            <p>By continuing, you agree to our <a href="#" onClick={() => navigate('/policy')}>terms of service and privacy policy.</a></p>
                         </div>
                     </form>
                 </div>
