@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import email_icon from '../../assets/email.png';
-import key_icon from '../../assets/password.png';
-import check_icon from '../../assets/check.png';
-import './Popup.css';
+import React, { useState } from "react"
+import email_icon from '../../assets/email.png'
+import key_icon from '../../assets/password.png'
+import check_icon from '../../assets/check.png'
+import './Popup.css'
 
 function Popup({ closePopup }) {
     const [isResetPopActive, setResetPopupActive] = useState(false);
@@ -54,4 +54,4 @@ function Popup({ closePopup }) {
     );
 }
 
-export default Popup;
+export default Popup
