@@ -1,33 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header & Footer/Header';
-import Footer from '../Header & Footer/Footer';
 import '../Layouts/Users.css';
 
 const Users = () => {
   const navigate = useNavigate();
-  // Mock data for users
-  const [users, setUsers] = useState([
-    { id: 1, name: 'John Doe', email: 'john@example.com', status: 'Active', role: 'Admin' },
-    { id: 2, name: 'Jane Smith', email: 'jane@example.com', status: 'Inactive', role: 'User' },
-  ]);
-
+  const [users, setUsers] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [currentUser, setCurrentUser] = useState({ id: null, name: '', email: '', status: 'Active', role: 'User' });
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleCreate = (user) => {
-    setUsers([...users, { ...user, id: users.length + 1 }]);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    const response = await fetch('/api/users');
+    const data = await response.json();
+    setUsers(data);
+  };
+
+  const handleCreate = async (user) => {
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    const newUser = await response.json();
+    setUsers([...users, newUser]);
     setIsModalOpen(false);
   };
 
-  const handleEdit = (user) => {
-    setUsers(users.map(u => (u.id === user.id ? user : u)));
+  const handleEdit = async (user) => {
+    const response = await fetch(`/api/users/${user.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(user),
+    });
+    const updatedUser = await response.json();
+    setUsers(users.map(u => (u.id === updatedUser.id ? updatedUser : u)));
     setIsEditing(false);
     setIsModalOpen(false);
   };
 
-  const handleDelete = (userId) => {
+  const handleDelete = async (userId) => {
+    await fetch(`/api/users/${userId}`, { method: 'DELETE' });
     setUsers(users.filter(user => user.id !== userId));
   };
 
@@ -45,7 +65,6 @@ const Users = () => {
 
   return (
     <div>
-      <Header />
       <div className="users">
         <h1>Users</h1>
         <button className="back-button" onClick={() => navigate('/Dashboard')}>Back to Dashboard</button>
@@ -85,7 +104,6 @@ const Users = () => {
           />
         )}
       </div>
-      <Footer />
     </div>
   );
 };
@@ -139,8 +157,9 @@ const UserModal = ({ user, isEditing, onSave, onClose }) => {
             Role:
             <select name="role" value={formData.role} onChange={handleChange} required>
               <option value="Admin">Admin</option>
-              <option value="User">User</option>
-              <option value="Guest">Guest</option>
+              <option value="User">Staff</option>
+              <option value="User">Buyer</option>
+              <option value="User">Seller</option>
             </select>
           </label>
           <div className="modal-actions">

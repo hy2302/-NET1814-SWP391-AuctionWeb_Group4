@@ -12,7 +12,7 @@
 
 .users h1 {
   margin-bottom: 1.5rem;
-  color: #333; /* Darker color for better contrast */
+  color: #3f3b3b;/* Darker color for better contrast */
   font-size: 2rem;
   text-align: center;
 }
@@ -35,7 +35,7 @@
 .user-table {
   width: 100%;
   border-collapse: collapse;
-  background: #353030; /* Light gray background for the table */
+  background: #e1dbdb; /* Light gray background for the table */
   border-radius: 8px; /* Rounded corners */
   overflow: hidden; /* To apply border radius */
   flex-grow: 1; /* Allow the table to grow to fill the remaining space */
@@ -44,7 +44,7 @@
 .user-table th, .user-table td {
   text-align: left;
   padding: 1rem;
-  border-bottom: 1px solid #070707; /* Light gray border for table cells */
+  border-bottom: 1px solid #e1d5d5; /* Light gray border for table cells */
 }
 
 .user-table th {
@@ -59,7 +59,7 @@
 }
 
 .user-table tr:hover {
-  background-color: #143658; /* Light gray background on hover */
+  background-color: #a9adb1; /* Light gray background on hover */
 }
 
 .edit-button, .delete-button {
@@ -127,8 +127,8 @@
   margin-bottom: 1.5rem;
   border: 1px solid #dee2e6; /* Light gray border */
   border-radius: 8px; /* Rounded corners */
-  background: #ffffff; /* White background */
-  color: #333; /* Dark text for better contrast */
+  background: #cec2c2; /* White background */
+  color: #1b1818; /* Dark text for better contrast */
 }
 
 .modal-actions {
@@ -155,7 +155,7 @@
 
 .modal-actions button[type="button"] {
   background-color: #f44336; /* Red background for cancel button */
-  color: #ffffff; /* White text for better contrast */
+  color: #241f1f; /* White text for better contrast */
 }
 
 .modal-actions button[type="button"]:hover {
