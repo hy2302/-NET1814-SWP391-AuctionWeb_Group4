@@ -22,7 +22,7 @@
     background-image: url('https://cdn.shopify.com/s/files/1/2649/1130/collections/cbddd6a9d131b5d4817d8c4e1ea492f8.jpg?v=1616308216');
     background-size: cover;
     background-position: center;
-    opacity: 50%;
+    opacity: 90%;
     z-index: -1;
 }
 
@@ -34,6 +34,7 @@
     border-radius: 20px;
     padding: 40px;
     overflow: hidden;
+    margin-top: 70px;
     z-index: 1;
 }
 

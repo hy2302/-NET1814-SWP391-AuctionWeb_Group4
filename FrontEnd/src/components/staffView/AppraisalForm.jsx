@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../layouts/AppraisalForm.css';
+import '../Layouts/AppraisalForm.css';
 
 const AppraisalForm = () => {
   const navigate = useNavigate();
