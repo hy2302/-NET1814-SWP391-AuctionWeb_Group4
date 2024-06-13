@@ -5,15 +5,15 @@
     padding: 0;
 }
 
-.login-body {
+body {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-height: 100vh;
+    height: 100vh;
     font-size: 19px;
 }
 
-.login-body::before {
+body::before {
     content: "";
     position: absolute;
     top: 0;
@@ -188,7 +188,7 @@
 }
 .terms {
     margin-top: 1rem;
-    font-size: 14px;
+    font-size: 15px;
     color: #666;
 }
 
