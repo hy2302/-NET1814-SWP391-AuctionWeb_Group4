@@ -1,0 +1,45 @@
+/* Dashboard Styles */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.dashboard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.buttons {
+  margin-bottom: 1.5rem;
+}
+
+.nav-button {
+  padding: 0.75rem 1.5rem;
+  margin-right: 1rem;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #0056b3;
+}
+
+.charts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+}
+
+.charts > div {
+  flex: 1;
+  margin: 0 1rem;
+}
+

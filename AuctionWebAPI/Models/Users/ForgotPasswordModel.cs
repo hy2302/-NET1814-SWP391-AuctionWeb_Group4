@@ -4,8 +4,8 @@ namespace AuctionWebAPI.Models.Users
 {
     public class ForgotPasswordModel
     {
-        [Required, EmailAddress, Display(Name = "Registered email address")]
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
-        public bool EmailSent { get; set; }
     }
 }

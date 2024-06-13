@@ -12,6 +12,8 @@ namespace AuctionWebAPI.Models.Users
         public string Address { get; set; }
         public int IsActive { get; set; } = 1;
         public DateTime CreatedOn { get; set; } = DateTime.Now;
+        public string? ResetPasswordToken { get; set; }
+        public DateTime? ResetPasswordTokenExpiration { get; set; }
 
     }
 }

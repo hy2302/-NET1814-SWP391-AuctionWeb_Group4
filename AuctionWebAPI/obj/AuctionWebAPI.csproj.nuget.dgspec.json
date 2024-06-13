@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj": {}
+    "C:\\Users\\ADMIN\\Desktop\\clone\\AuctionWebAPI-clone\\AuctionWebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj": {
+    "C:\\Users\\ADMIN\\Desktop\\clone\\AuctionWebAPI-clone\\AuctionWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\Desktop\\clone\\AuctionWebAPI-clone\\AuctionWebAPI.csproj",
         "projectName": "AuctionWebAPI",
-        "projectPath": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj",
+        "projectPath": "C:\\Users\\ADMIN\\Desktop\\clone\\AuctionWebAPI-clone\\AuctionWebAPI.csproj",
         "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\obj\\",
+        "outputPath": "C:\\Users\\ADMIN\\Desktop\\clone\\AuctionWebAPI-clone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,17 +50,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "Microsoft.AspNet.WebApi.Core": {
-              "target": "Package",
-              "version": "[5.3.0, )"
-            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.3, )"
-            },
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[8.0.6, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
@@ -77,6 +69,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.3, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
