@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react"
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './components/Navbar/Navbar'
-import Home from './components/Home/Home.jsx'
-import Footer from './components/Footer/MainFooter.jsx'
-import AuctionView from './components/AuctionItem/AuctionView.jsx'
 
 function App() {
-<<<<<<< Updated upstream:src/App.jsx
   const navigate = useNavigate();
   
   return (
@@ -27,35 +23,6 @@ function App() {
       </div>
     </>
   )
-=======
-    const [nav, setNav] = useState(true);
-
-    const changeNavBackground = () => {
-        if (window.scrollY >= 150) {
-            setNav(false);
-        } else {
-            setNav(true);
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener('scroll', changeNavBackground);
-        return () => {
-            window.removeEventListener('scroll', changeNavBackground);
-        };
-    }, []);
-
-    return (
-        <>
-            <Navbar nav={nav} />
-            <Routes>
-                <Route path="/*" element={<Home />} />
-                <Route path="/auctionview" element={<AuctionView />} />
-            </Routes>
-            <Footer />
-        </>
-    )
->>>>>>> Stashed changes:FrontEnd/src/App.jsx
 }
 
 export default App
