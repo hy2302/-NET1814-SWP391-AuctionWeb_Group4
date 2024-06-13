@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Layouts/About.css';
+import '../layouts/About.css';
 import about1 from '../../assets/about1.png';
 import about2 from '../../assets/about2.png';
 import about3 from '../../assets/about3.png';
