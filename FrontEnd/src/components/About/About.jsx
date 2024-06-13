@@ -10,7 +10,7 @@ const About = () => {
   
   return (
     <div>
-      <Header />
+      
       <div className="about-container">
         <h1>About Us</h1>
 

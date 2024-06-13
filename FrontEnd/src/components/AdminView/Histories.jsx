@@ -1,27 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Layouts/Histories.css';
 
-
 const Histories = () => {
   const navigate = useNavigate();
-  // Mock data for transactions and payouts
-  const [transactions] = useState([
-    { id: 1, date: '2023-01-01', amount: 100, status: 'Completed' },
-    { id: 2, date: '2023-01-05', amount: 150, status: 'Pending' },
-  ]);
+  const [transactions, setTransactions] = useState([]);
+  const [payouts, setPayouts] = useState([]);
 
-  const [payouts] = useState([
-    { id: 1, date: '2023-02-01', amount: 80, status: 'Completed' },
-    { id: 2, date: '2023-02-10', amount: 120, status: 'Pending' },
-  ]);
+  useEffect(() => {
+    fetchHistories();
+  }, []);
+
+  const fetchHistories = async () => {
+    try {
+      const transactionsResponse = await fetch('/api/transactions');
+      const transactionsData = await transactionsResponse.json();
+      setTransactions(transactionsData);
+
+      const payoutsResponse = await fetch('/api/payouts');
+      const payoutsData = await payoutsResponse.json();
+      setPayouts(payoutsData);
+    } catch (error) {
+      console.error('Error fetching histories:', error);
+    }
+  };
 
   return (
     <div>
-     
       <div className="histories">
         <h1>History</h1>
-        <button className="back-button" onClick={() => navigate('/Dashboard')}>Back to Dashboard</button>
+        <button className="back-button" onClick={() => navigate('/Dashboard')}>
+          Back to Dashboard
+        </button>
         <div className="history-section">
           <h2>Transaction History</h2>
           <table className="history-table">
@@ -65,7 +75,6 @@ const Histories = () => {
           </table>
         </div>
       </div>
-     
     </div>
   );
 };

@@ -127,8 +127,8 @@
   margin-bottom: 1.5rem;
   border: 1px solid #dee2e6; /* Light gray border */
   border-radius: 8px; /* Rounded corners */
-  background: #ffffff; /* White background */
-  color: #eae1e1; /* Dark text for better contrast */
+  background: #cec2c2; /* White background */
+  color: #1b1818; /* Dark text for better contrast */
 }
 
 .modal-actions {
@@ -155,7 +155,7 @@
 
 .modal-actions button[type="button"] {
   background-color: #f44336; /* Red background for cancel button */
-  color: #ffffff; /* White text for better contrast */
+  color: #241f1f; /* White text for better contrast */
 }
 
 .modal-actions button[type="button"]:hover {
