@@ -29,10 +29,11 @@
     border-radius: 12px;
     font-family: 'Poppins', sans-serif;
     width: 90%;
-    max-height: 200px;
+    max-height: 220px;
 }
 
 .popup-content h2 {
+    padding-top: 10px;
     color: rgb(75, 74, 74);
     font-size: 24px;
     margin-bottom: 20px;
@@ -84,7 +85,6 @@
     border-radius: 5px;
     cursor: pointer;
     margin: 0 10px;
-    margin-bottom: 20px;
     font-size: 14px;
 }
 
