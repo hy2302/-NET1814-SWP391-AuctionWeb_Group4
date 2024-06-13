@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header & Footer/Header';
-import Footer from '../Header & Footer/Footer';
 import '../Layouts/Histories.css';
 
 
@@ -20,7 +18,7 @@ const Histories = () => {
 
   return (
     <div>
-      <Header />
+     
       <div className="histories">
         <h1>History</h1>
         <button className="back-button" onClick={() => navigate('/Dashboard')}>Back to Dashboard</button>
@@ -67,7 +65,7 @@ const Histories = () => {
           </table>
         </div>
       </div>
-      <Footer />
+     
     </div>
   );
 };

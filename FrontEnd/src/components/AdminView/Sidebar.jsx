@@ -5,16 +5,16 @@ import '../Layouts/Sidebar.css';
 const Sidebar = () => {
   return (
     <div className="sidebar">
-      <h2>Admin Dashboard</h2>
+       <h2>Management for Admin</h2>
       <ul>
         <li>
-          <Link to="/">1. Dashboard</Link>
+          <Link to="/users">1. Users</Link>
         </li>
         <li>
-          <Link to="/users">2. Users</Link>
+          <Link to="/histories">2. Histories</Link> 
         </li>
         <li>
-          <Link to="/histories">3. Histories</Link> 
+          <Link to="/">Back to Main</Link>
         </li>
       </ul>
     </div>

@@ -2,9 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import PieChart from '../Charts/PieChart';
 import LineChart from '../Charts/LineChart';
-import Header from '../Header & Footer/Header';
-import Footer from '../Header & Footer/Footer';
+
 import '../Layouts/Dashboard.css';
+import '../AdminView/Sidebar'
+import Sidebar from '../AdminView/Sidebar.jsx';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -22,7 +23,8 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard">
-      <Header />
+      
+      <Sidebar/>
       <main>
         <h1>Dashboard</h1>
         <p>Welcome to the admin dashboard. Here you can manage your application.</p>
@@ -36,7 +38,7 @@ const Dashboard = () => {
           <LineChart />
         </div>
       </main>
-      <Footer />
+      
     </div>
   );
 };

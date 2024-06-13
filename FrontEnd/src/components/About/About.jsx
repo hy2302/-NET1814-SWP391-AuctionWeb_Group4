@@ -1,7 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header & Footer/Header';
-import Footer from '../Header & Footer/Footer';
 import '../Layouts/About.css';
 import about1 from '../../assets/about1.png';
 import about2 from '../../assets/about2.png';
@@ -55,7 +53,7 @@ const About = () => {
         </section>
         <button onClick={() => navigate('/')}>Back to Main</button>
       </div>
-      <Footer />
+     
     </div>
   );
 };

@@ -1,7 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header & Footer/Header';
-import Footer from '../Header & Footer/Footer';
 import '../Layouts/Policy.css';
 
 const Policy = () => {
@@ -9,7 +7,7 @@ const Policy = () => {
   
   return (
     <div>
-      <Header />
+      
       <div className="policy-container">
         <h1>Policy Page</h1>
 
@@ -60,7 +58,7 @@ const Policy = () => {
         </section>
         <button onClick={() => navigate('/')}>Back to Main</button>
       </div>
-      <Footer />
+     
     </div>
   );
 };
