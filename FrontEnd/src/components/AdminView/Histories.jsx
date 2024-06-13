@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Layouts/Histories.css';
+import '../layouts/Histories.css';
 
 const Histories = () => {
   const navigate = useNavigate();

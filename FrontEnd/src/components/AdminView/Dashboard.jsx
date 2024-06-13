@@ -1,9 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import PieChart from '../Charts/PieChart';
-import LineChart from '../Charts/LineChart';
-import Sidebar from '../AdminView/Sidebar.jsx';
-import '../Layouts/Dashboard.css';
+import PieChart from '../charts/PieChart.jsx';
+import LineChart from '../charts/LineChart.jsx';
+import Sidebar from './Sidebar.jsx';
+import '../layouts/Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();

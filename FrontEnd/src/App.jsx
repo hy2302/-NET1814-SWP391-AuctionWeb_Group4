@@ -18,7 +18,7 @@ function App() {
           <ul>
             <li onClick={() => navigate('/')}>Home</li>
             <li onClick={() => navigate('/auctions')}>Auctions</li>
-            <li onClick={() => navigate('/categories')}>Categories</li>
+            <li onClick={() => navigate('/appraisals')}>Appraisal</li>
             <li onClick={() => navigate('/policies')}>Policy</li>
             <li onClick={() => navigate('/abouts')}>Abouts</li>
             <li onClick={() => navigate('/dashboard')}>Dashboard</li>
