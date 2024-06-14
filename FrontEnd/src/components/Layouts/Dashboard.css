@@ -1,4 +1,3 @@
-/* Dashboard Styles */
 body {
   display: flex;
   flex-direction: column;
@@ -43,3 +42,7 @@ body {
   margin: 0 1rem;
 }
 
+.dashboard .main-content h1,
+.dashboard .main-content h2 {
+  color: black;
+}
