@@ -7,19 +7,6 @@ import '../Layouts/Dashboard.css';
 
 const Dashboard = () => {
   const navigate = useNavigate();
-
-  const navigateToMain = () => {
-    navigate('/');
-  };
-
-  const navigateToUsers = () => {
-    navigate('/users');
-  };
-
-  const navigateToHistories = () => {
-    navigate('/histories');
-  };
-
   return (
     <div className="dashboard">
       <Sidebar />
@@ -29,9 +16,9 @@ const Dashboard = () => {
           <h2>Website Statisctic</h2>
           
           <div className="toolbar">
-            <button onClick={navigateToMain} className="nav-button">Main</button>
-            <button onClick={navigateToUsers} className="nav-button">Users</button>
-            <button onClick={navigateToHistories} className="nav-button">Histories</button>
+            <button onClick={() => navigate('/*')} className="nav-button">Main</button>
+            <button onClick={() => navigate('/users')} className="nav-button">Users</button>
+            <button onClick={() => navigate('/histories')} className="nav-button">Histories</button>
           </div>
           
           <div className="charts">
