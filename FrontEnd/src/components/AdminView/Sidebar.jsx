@@ -1,11 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../Layouts/Sidebar.css';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import '../Layouts/Sidebar.css'
 
 const Sidebar = () => {
   return (
     <div className="sidebar">
-       <h2>Management for Admin</h2>
+      <h2>JewelryAuction</h2>
       <ul>
         <li>
           <Link to="/users">1. Users</Link>
@@ -21,4 +21,4 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar;
+export default Sidebar
