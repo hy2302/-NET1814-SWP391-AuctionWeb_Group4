@@ -1,48 +1,45 @@
 body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .dashboard {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
+    display: flex;
 }
 
-.buttons {
-  margin-bottom: 1.5rem;
+.main-container {
+    flex: 1;
+    transition: margin-left 0.3s;
+    padding: 2rem;
 }
 
-.nav-button {
-  padding: 0.75rem 1.5rem;
-  margin-right: 1rem;
-  background-color: #007BFF;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s;
+.sidebar-open .main-container {
+    margin-left: 200px;
 }
 
-.nav-button:hover {
-  background-color: #0056b3;
+.sidebar-close .main-container {
+    margin-left: 50px;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-content h1,
+.main-content h2 {
+    color: black;
 }
 
 .charts {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
 }
 
 .charts > div {
-  flex: 1;
-  margin: 0 1rem;
-}
-
-.dashboard .main-content h1,
-.dashboard .main-content h2 {
-  color: black;
+    flex: 1;
+    margin: 0 1rem;
 }

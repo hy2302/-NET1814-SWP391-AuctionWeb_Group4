@@ -1,5 +1,5 @@
 .sidebar {
-    width: 200px;
+    width: 240px;
     height: 100vh;
     background: #333;
     color: white;
@@ -9,32 +9,51 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .sidebar h2 {
+    transition: width 0.5s;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sidebar.closed {
+    width: 70px;
+}
+
+.toggle-button {
+    font-size: 18px;
+    cursor: pointer;
+    background: transparent;
+    color: white;
+    margin-top: 15px;
+}
+
+.sidebar h2 {
     margin-top: 20px;
-  }
-  
-  .sidebar ul {
+    margin-left: 20px;
+    font-size: 23px;
+}
+
+.sidebar ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .sidebar ul li {
+    width: 100%;
+}
+
+.sidebar ul li {
+    width: 100%;
     margin: 20px 0;
-  }
-  
-  .sidebar ul li a {
+}
+
+.sidebar ul li a {
     color: white;
     text-decoration: none;
-  }
-  
-  .sidebar ul li a:hover {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar ul li a:hover {
     text-decoration: underline;
-  }
-  
-  .content {
-    margin-left: 200px;
-    padding: 20px;
-  }
-  
+}

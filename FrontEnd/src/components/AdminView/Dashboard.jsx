@@ -1,17 +1,22 @@
-import React from 'react';
-import PieChart from '../Charts/PieChart.jsx';
-import LineChart from '../Charts/LineChart.jsx';
-import Sidebar from './Sidebar.jsx';
-import '../Layouts/Dashboard.css';
+import React, { useState } from 'react'
+import Sidebar from './Sidebar'
+import PieChart from '../Charts/PieChart'
+import LineChart from '../Charts/LineChart'
+import '../Layouts/Dashboard.css'
 
 const Dashboard = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
   return (
     <div className="dashboard">
-      <Sidebar />
-      <div className="main-container">
+      <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+      <div className={`main-container ${sidebarOpen ? 'sidebar-open' : 'sidebar-close'}`}>
         <main className="main-content">
           <h1>Dashboard</h1>
-          <h2>Website Statisctic</h2>
           <div className="charts">
             <PieChart />
             <LineChart />
@@ -22,4 +27,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default Dashboard
