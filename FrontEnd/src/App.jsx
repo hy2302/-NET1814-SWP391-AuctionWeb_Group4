@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home.jsx'
-import Footer from './components/Footer/MainFooter.jsx'
+import Footer from './components/HeaderFooter/MainFooter.jsx'
 import AuctionView from './components/AuctionView/AuctionView.jsx'
 
 function App() {
