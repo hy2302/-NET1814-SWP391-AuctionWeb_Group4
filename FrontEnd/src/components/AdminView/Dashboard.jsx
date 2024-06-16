@@ -1,30 +1,30 @@
 import React, { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import Sidebar from './Sidebar'
-import PieChart from '../Charts/PieChart'
-import LineChart from '../Charts/LineChart'
+import ChartView from './ChartView'
+import Users from './Users'
+import Histories from './Histories'
 import '../Layouts/Dashboard.css'
 
 const Dashboard = () => {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+    const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const toggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
 
-  return (
-    <div className="dashboard">
-      <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-      <div className={`main-container ${sidebarOpen ? 'sidebar-open' : 'sidebar-close'}`}>
-        <main className="main-content">
-          <h1>Dashboard</h1>
-          <div className="charts">
-            <PieChart />
-            <LineChart />
-          </div>
-        </main>
-      </div>
-    </div>
-  );
+    return (
+        <div className={`dashboard ${sidebarOpen ? 'sidebar-open' : 'sidebar-close'}`}>
+            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar}/>
+            <div className="main-container">
+                <Routes>
+                    <Route path="/" element={<ChartView />} />
+                    <Route path="/users" element={<Users />} />
+                    <Route path="/histories" element={<Histories />} />
+                </Routes>
+            </div>
+        </div>
+    );
 };
 
 export default Dashboard
