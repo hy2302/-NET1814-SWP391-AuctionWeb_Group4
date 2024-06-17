@@ -4398,11 +4398,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj",
       "projectName": "AuctionWebAPI",
-      "projectPath": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj",
+      "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj",
       "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\obj\\",
+      "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4493,7 +4493,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
       }
     }
   },
