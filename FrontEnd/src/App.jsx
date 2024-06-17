@@ -4,7 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home.jsx'
 import Footer from './components/HeaderFooter/MainFooter.jsx'
-import AuctionView from './components/AuctionView/AuctionView.jsx'
+import AuctionViewUser from './components/auctionView/AuctionViewUser.jsx'
 
 function App() {
     const [nav, setNav] = useState(true);
@@ -29,7 +29,7 @@ function App() {
             <Navbar nav={nav} />
             <Routes>
                 <Route path="/*" element={<Home />} />
-                <Route path="/auctionview" element={<AuctionView />} />
+                <Route path="/auctionviewuser" element={<AuctionViewUser />} />
             </Routes>
             <Footer />
         </>
