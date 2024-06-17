@@ -4,7 +4,7 @@ import Sidebar from './Sidebar'
 import ChartView from './ChartView'
 import Users from './Users'
 import Histories from './Histories'
-import '../Layouts/Dashboard.css'
+import '../layouts/Dashboard.css'
 
 const Dashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(true);
