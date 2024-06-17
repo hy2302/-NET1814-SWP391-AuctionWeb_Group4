@@ -1,65 +1,83 @@
-/* User List Styles */
 .users {
-  padding: 2rem;
-  width: 100%; /* Span out the users section to 100% of the viewport width */
-  height: 100%; /* Fill the screen vertically */
-  background: #ffffff; /* White background */
+  width: 100%;
+  height: 100%;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  display: flex; /* Use flexbox to align content vertically */
-  flex-direction: column; /* Align content vertically */
+  display: flex;
+  flex-direction: column; 
 }
 
 .users h1 {
+  padding-top: 30px;
   margin-bottom: 1.5rem;
-  color: #3f3b3b;/* Darker color for better contrast */
-  font-size: 2rem;
+  color: #3f3b3b;
+  font-size: 40px;
   text-align: center;
 }
 
 .create-button {
-  padding: 1rem 2rem;
-  margin-bottom: 1.5rem;
-  background-color: #007BFF; /* Primary blue background for buttons */
-  color: #ffffff; /* White text for better contrast */
+  width: 110px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #49f38d;
+  color: #ffffff;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  display: flex;
+  align-self: center;
 }
 
 .create-button:hover {
-  background-color: #0056b3; /* Darker blue background on hover */
+  background-color: #35d274;
+}
+
+.back-button {
+  width: 160px;
+  height: 40px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #49f38d;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-self: center;
 }
 
 .user-table {
-  width: 100%;
+  display: flexbox;
+  align-self: center;
+  justify-content: center;
+  width: 1200px;
   border-collapse: collapse;
-  background: #e1dbdb; /* Light gray background for the table */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* To apply border radius */
-  flex-grow: 1; /* Allow the table to grow to fill the remaining space */
+  background: #e1dbdb;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-grow: 1;
 }
 
 .user-table th, .user-table td {
   text-align: left;
-  padding: 1rem;
-  border-bottom: 1px solid #e1d5d5; /* Light gray border for table cells */
+  padding: 10px;
+  border-bottom: 1px solid #e1d5d5;
 }
 
 .user-table th {
-  background-color: #007BFF; /* Primary blue background for table headers */
-  color: #ffffff; /* White text for better contrast */
+  background-color: #1b1b1c;
+  color: #ffffff;
   font-weight: bold;
-  text-transform: uppercase;
+
 }
 
 .user-table tr {
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s;
 }
 
 .user-table tr:hover {
-  background-color: #a9adb1; /* Light gray background on hover */
+  background-color: #a9adb1;
 }
 
 .edit-button, .delete-button {
@@ -68,28 +86,27 @@
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s;
 }
 
 .edit-button {
-  background-color: #007BFF; /* Primary blue background for edit button */
-  color: #ffffff; /* White text for better contrast */
+  background-color: #007BFF;
+  color: #ffffff;
 }
 
 .edit-button:hover {
-  background-color: #0056b3; /* Darker blue background on hover */
+  background-color: #0056b3;
 }
 
 .delete-button {
-  background-color: #f44336; /* Red background for delete button */
-  color: #ffffff; /* White text for better contrast */
+  background-color: #f44336;
+  color: #ffffff;
 }
 
 .delete-button:hover {
-  background-color: #da190b; /* Darker red background on hover */
+  background-color: #da190b;
 }
 
-/* Modal Styles */
 .modal {
   position: fixed;
   top: 0;
@@ -103,9 +120,9 @@
 }
 
 .modal-content {
-  background: #ffffff; /* White background */
+  background: #ffffff;
   padding: 2rem;
-  border-radius: 12px; /* Rounded corners */
+  border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   width: 400px;
 }
