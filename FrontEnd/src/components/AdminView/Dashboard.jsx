@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Sidebar from './Sidebar'
-import PieChart from '../Charts/PieChart'
-import LineChart from '../Charts/LineChart'
-import '../Layouts/Dashboard.css'
+import PieChart from '../charts/PieChart'
+import LineChart from '../charts/LineChart'
+import '../layouts/Dashboard.css'
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
