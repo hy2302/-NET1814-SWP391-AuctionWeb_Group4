@@ -15,7 +15,6 @@ namespace AuctionWebAPI.Models
         }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
-<<<<<<< HEAD
         public DbSet<JewelryType> JewelryTypes { get; set; }
         public DbSet<Jewel> Jewelries { get; set; }
         public DbSet<Auction_Model> Auctions { get; set; }
@@ -89,9 +88,5 @@ namespace AuctionWebAPI.Models
 
             base.OnModelCreating(modelBuilder);
         }
-=======
-        public DbSet<UserA> UserAs { get; set; }
-        public DbSet<Jewelry> Jewelries { get; set; }
->>>>>>> master
     }
 }

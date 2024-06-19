@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\bin",
+    "\\bin\\Debug",
+    "\\bin\\Release",
+    "\\Controllers",
+    "\\Controllers\\Admin",
+    "\\Controllers\\Auction",
+    "\\Controllers\\Jewelry",
+    "\\Controllers\\Transaction",
+    "\\Migrations"
+  ],
+  "SelectedNode": "\\Program.cs",
+  "PreviewInSolutionExplorer": false
+}
