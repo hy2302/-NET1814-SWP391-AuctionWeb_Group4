@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Jm1IPHE3tjUHo4bwN20cnAS7olnIgnFdJBubiY1d+2XZ1QyNKL4cQ+7MHHbeVtNSwr5gaa2rt8FADCN/tofMYQ==",
+  "dgSpecHash": "Gs8+G2ayMwU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj",
+  "projectFilePath": "C:\\Users\\ADMIN\\source\\repos\\AuctionWebAPI\\AuctionWebAPI\\AuctionWebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\ADMIN\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
