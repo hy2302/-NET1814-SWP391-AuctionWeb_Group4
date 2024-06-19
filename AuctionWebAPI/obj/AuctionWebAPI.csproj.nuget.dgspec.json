@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SWP\\ProjectGit\\AuctionWebAPI\\AuctionWebAPI.csproj": {}
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj": {}
   },
   "projects": {
-    "D:\\SWP\\ProjectGit\\AuctionWebAPI\\AuctionWebAPI.csproj": {
+    "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SWP\\ProjectGit\\AuctionWebAPI\\AuctionWebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj",
         "projectName": "AuctionWebAPI",
-        "projectPath": "D:\\SWP\\ProjectGit\\AuctionWebAPI\\AuctionWebAPI.csproj",
-        "packagesPath": "C:\\Users\\Sani\\.nuget\\packages\\",
-        "outputPath": "D:\\SWP\\ProjectGit\\AuctionWebAPI\\obj\\",
+        "projectPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj",
+        "packagesPath": "C:\\Users\\ADMIN\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Sani\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ADMIN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -52,7 +52,10 @@
           "dependencies": {
             "Microsoft.AspNet.WebApi.Core": {
               "target": "Package",
-              "version": "[5.3.0, )"
+              "version": "[5.3.0, )",
+              "noWarn": [
+                "NU1701"
+              ]
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
@@ -102,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

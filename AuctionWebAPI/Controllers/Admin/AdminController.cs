@@ -1,5 +1,6 @@
 ﻿
 using AuctionWebAPI.Models;
+using AuctionWebAPI.Models.Admin;
 using AuctionWebAPI.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

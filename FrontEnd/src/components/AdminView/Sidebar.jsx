@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import '../layouts/Sidebar.css'
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
+    const navigate = useNavigate();
     return (
         <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
             {isOpen && (
@@ -14,13 +15,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <div className="sidebar-component">
                         <ul>
                             <li>
-                                <Link to="/users">Users</Link>
+                                <span onClick={() => navigate('/users')}>Users</span>
                             </li>
                             <li>
-                                <Link to="/histories">Histories</Link>
+                                <span onClick={() => navigate('/histories')}>Histories</span>
                             </li>
                             <li>
-                                <Link to="/">Back to Main</Link>
+                                <Link to="/*">Back to Main</Link>
                             </li>
                         </ul>
                     </div>
@@ -28,7 +29,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             )}
             {!isOpen && (
                 <div className="sidebar-header">
-                    <button className="toggle-button" onClick={toggleSidebar}>☰</button>
+                    <button className="toggle-button" onClick={toggleSidebar}> ☰ </button>
                 </div>
             )}
         </div>
