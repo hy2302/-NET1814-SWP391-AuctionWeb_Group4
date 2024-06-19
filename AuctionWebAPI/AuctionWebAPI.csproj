@@ -30,7 +30,10 @@
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <Folder Include="Controllers\Admin\" />
+=======
+>>>>>>> master
     <Folder Include="Repository\" />
   </ItemGroup>
 

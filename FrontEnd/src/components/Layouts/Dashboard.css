@@ -1,0 +1,48 @@
+.dashboard {
+    display: flex;
+}
+
+.sidebar {
+    width: 250px;
+    transition: transform 1s;
+    z-index: 1;
+}
+
+.sidebar-closed {
+    transform: translateX(-220px);
+}
+
+.main-container {
+    flex: 1;
+    transition: margin-left 0.8s;
+    padding: 50px;
+}
+
+.sidebar-open .main-container {
+    margin-left: 250px;
+}
+
+.sidebar-close .main-container {
+    width: 100%;
+}
+
+.main-content {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.main-content h1,
+.main-content h2 {
+    color: black;
+}
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.charts > div {
+    flex: 1;
+    margin: 0 1rem;
+}
