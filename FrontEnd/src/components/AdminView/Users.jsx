@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Layouts/Users.css';
+import '../layouts/Users.css';
 
 const Users = () => {
   const navigate = useNavigate();
@@ -14,41 +14,57 @@ const Users = () => {
   }, []);
 
   const fetchUsers = async () => {
-    const response = await fetch('/api/users');
-    const data = await response.json();
-    setUsers(data);
+    try {
+      const response = await fetch('http://localhost:5074/api/admin/GetUsers');
+      const data = await response.json();
+      setUsers(data);
+    } catch (error) {
+      console.error('Error fetching users:', error);
+    }
   };
 
   const handleCreate = async (user) => {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-    const newUser = await response.json();
-    setUsers([...users, newUser]);
-    setIsModalOpen(false);
+    try {
+      const response = await fetch('http://localhost:5074/api/admin/users', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      const newUser = await response.json();
+      setUsers([...users, newUser]);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Error creating user:', error);
+    }
   };
 
   const handleEdit = async (user) => {
-    const response = await fetch(`/api/users/${user.id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-    const updatedUser = await response.json();
-    setUsers(users.map(u => (u.id === updatedUser.id ? updatedUser : u)));
-    setIsEditing(false);
-    setIsModalOpen(false);
+    try {
+      const response = await fetch(`http://localhost:5074/api/admin/users/5/${user.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+      });
+      const updatedUser = await response.json();
+      setUsers(users.map(u => (u.id === updatedUser.id ? updatedUser : u)));
+      setIsEditing(false);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error('Error updating user:', error);
+    }
   };
 
   const handleDelete = async (userId) => {
-    await fetch(`/api/users/${userId}`, { method: 'DELETE' });
-    setUsers(users.filter(user => user.id !== userId));
+    try {
+      await fetch(`http://localhost:5074/api/admin/users/5/${userId}`, { method: 'DELETE' });
+      setUsers(users.filter(user => user.id !== userId));
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    }
   };
 
   const openEditModal = (user) => {

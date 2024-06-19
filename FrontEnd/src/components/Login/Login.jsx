@@ -13,6 +13,14 @@ function Login() {
     const navigate = useNavigate();
     const [isSignUpActive, setSignUpActive] = useState(false);
     const [openPopup, setPopupStatus] = useState(false);
+    const [loginData, setLoginData] = useState({ username: '', password: '' });
+    const [signupData, setSignupData] = useState({
+        username: '',
+        password: '',
+        email: '',
+        contactnumber: '',
+        address: ''
+    });
 
     const toggleForms = () => {
         setSignUpActive(!isSignUpActive);
@@ -22,7 +30,55 @@ function Login() {
         setPopupStatus(!openPopup);
     };
 
-    
+    const handleLoginChange = (e) => {
+        const { id, value } = e.target;
+        setLoginData((prevData) => ({ ...prevData, [id]: value }));
+    };
+
+    const handleSignupChange = (e) => {
+        const { id, value } = e.target;
+        setSignupData((prevData) => ({ ...prevData, [id]: value }));
+    };
+
+    const handleLoginSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:5074/Login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(loginData),
+            });
+            const data = await response.json();
+            if (data.success) {
+                navigate('/dashboard');
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    };
+
+    const handleSignupSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch('http://localhost:5074/Registration', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(signupData),
+            });
+            const data = await response.json();
+            if (data.success) {
+                setSignUpActive(false);
+            } else {
+                alert(data.message);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        }
+    };
 
     return (
         <div className="login-body">
@@ -30,17 +86,17 @@ function Login() {
                 <div className="form-wrapper login">
                     <h2>Login</h2>
                     <p>Sign in or create an account</p>
-                    <form action="login" className="login">
+                    <form className="login" onSubmit={handleLoginSubmit}>
                         <div className="input-group">
                             <label htmlFor="username">
                                 <img className="img-icon" src={user_icon} alt="User icon"/>
-                                <input type="text" id="username" placeholder="Enter your username" required/>
+                                <input type="text" id="username" placeholder="Enter your username" required onChange={handleLoginChange}/>
                             </label>
                         </div>
                         <div className="input-group">
                             <label htmlFor="password">
                                 <img className="img-icon" src={key_icon} alt="Password icon"/>
-                                <input type="password" id="password" placeholder="Enter your password" required/>
+                                <input type="password" id="password" placeholder="Enter your password" required onChange={handleLoginChange}/>
                             </label>
                         </div>
                         <div className="options">
@@ -59,39 +115,39 @@ function Login() {
                         </div>
                     </form>
                 </div>
-            {openPopup && <Popup closePopup={togglePopup} />}
+                {openPopup && <Popup closePopup={togglePopup} />}
                 <div className="form-wrapper signup">
                     <h2>Sign Up</h2>
                     <p>Create an account or sign in</p>
-                    <form action="signup" className="signup">
+                    <form className="signup" onSubmit={handleSignupSubmit}>
                         <div className="input-group">
                             <label htmlFor="username">
                                 <img className="img-icon" src={user_icon} alt="User icon"/>
-                                <input type="text" id="username" placeholder="Enter your username" required/>
+                                <input type="text" id="username" placeholder="Enter your username" required onChange={handleSignupChange}/>
                             </label>
                         </div>
                         <div className="input-group">
                             <label htmlFor="password">
                                 <img className="img-icon" src={key_icon} alt="Password icon"/>
-                                <input type="password" id="password" placeholder="Enter your password" required/>
+                                <input type="password" id="password" placeholder="Enter your password" required onChange={handleSignupChange}/>
                             </label>
                         </div>
                         <div className="input-group">
                             <label htmlFor="email">
                                 <img className="img-icon-e" src={email_icon} alt="Email icon"/>
-                                <input type="email" id="email" placeholder="Enter your email" required/>
+                                <input type="email" id="email" placeholder="Enter your email" required onChange={handleSignupChange}/>
                             </label>
                         </div>
                         <div className="input-group">
                             <label htmlFor="contactnumber">
-                                <img className="img-icon" src={phone_icon} alt="Email icon"/>
-                                <input type="text" id="contactnumber" placeholder="Enter your contact number" required/>
+                                <img className="img-icon" src={phone_icon} alt="Phone icon"/>
+                                <input type="text" id="contactnumber" placeholder="Enter your contact number" required onChange={handleSignupChange}/>
                             </label>
                         </div>
                         <div className="input-group">
                             <label htmlFor="address">
-                                <img className="img-icon" src={address_icon} alt="Email icon"/>
-                                <input type="text" id="address" placeholder="Enter your address" required/>
+                                <img className="img-icon" src={address_icon} alt="Address icon"/>
+                                <input type="text" id="address" placeholder="Enter your address" required onChange={handleSignupChange}/>
                             </label>
                         </div>
                         <div className="register-link">
