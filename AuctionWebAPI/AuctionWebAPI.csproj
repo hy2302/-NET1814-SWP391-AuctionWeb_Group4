@@ -7,14 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\Admin\**" />
-    <Content Remove="Models\Admin\**" />
-    <EmbeddedResource Remove="Models\Admin\**" />
-    <None Remove="Models\Admin\**" />
+    <!-- Remove explicit inclusion of Models\Admin\** -->
+    <!-- <Compile Include="Models\Admin\**\*.cs" /> -->
+    <Content Include="Models\Admin\**" />
+    <EmbeddedResource Include="Models\Admin\**" />
+    <None Include="Models\Admin\**" />
+    
+    <!-- Specific folders to include -->
+    <Folder Include="Repository\" />
+    <Folder Include="Controllers\Admin\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" NoWarn="NU1701" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
@@ -27,11 +32,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\Admin\" />
-    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>

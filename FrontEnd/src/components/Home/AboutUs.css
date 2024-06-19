@@ -1,0 +1,96 @@
+.about-us-section-wrapper {
+    text-align: center;
+    background-image: url('../../assets/design-bg-3.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 65%;
+    background-position: -250px 200px;
+    padding-bottom: 15px;
+}
+
+.about-us-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 90px;
+    max-width: 90%;
+    margin-left: 50px;
+}
+
+.accordion {
+    background-color: #9a87bc;
+    border-radius: 20px;
+    padding: 25px;
+    width: 40%;
+}
+
+.accordion-item {
+    background-color: #fffffff7;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    color: #ed6b6b;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.accordion-content {
+    margin-top: 10px;
+    font-size: 15px;
+    color: #333;
+}
+
+.about-us {
+    width: 500px;
+    padding-left: 70px;
+    padding-top: 30px;
+}
+
+.about-us h2 {
+    font-size: 36px;
+    margin: 10px 0;
+    color: #000;
+}
+
+.about-us p {
+    font-size: 16px;
+    color: #666;
+    margin: 20px 0;
+}
+
+.accordion-content {
+    overflow: hidden;
+    transition: max-height 300ms ease-out, padding 300ms ease-out;
+}
+
+.accordion-content-enter {
+    max-height: 0;
+    padding: 0 15px;
+}
+
+.accordion-content-enter-active {
+    max-height: var(--content-height);
+    padding: 15px;
+}
+
+.accordion-content-exit {
+    max-height: var(--content-height);
+    padding: 15px;
+}
+
+.accordion-content-exit-active {
+    max-height: 0;
+    padding: 0 15px;
+    transition: max-height 300ms ease-out, padding 300ms ease-out;
+}
+
+.accordion-title p {
+    font-size: 24px;
+    font-weight: bolder;
+}
