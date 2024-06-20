@@ -4,7 +4,8 @@
   border-radius: 12px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
 }
 
 .histories h1 {
@@ -17,6 +18,8 @@
 
 .history-section {
   margin-bottom: 2rem;
+  width: 90%; /* Make sections responsive */
+  max-width: 1200px; /* Limit the maximum width */
 }
 
 .history-section h2 {
@@ -26,15 +29,11 @@
 }
 
 .history-table {
-  display: flexbox;
-  align-self: center;
-  justify-content: center;
-  width: 1200px;
+  width: 100%; /* Take full width of the section */
   border-collapse: collapse;
   background: #e1dbdb;
   border-radius: 8px;
   overflow: hidden;
-  flex-grow: 1;
 }
 
 .history-table th, .history-table td {

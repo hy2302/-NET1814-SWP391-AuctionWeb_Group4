@@ -32,7 +32,7 @@ function Popup({ closePopup }) {
 
     const handleSaveClick = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/forgot-password', {
+            const response = await fetch('http://localhost:5074/api/User/Forgot Password', {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

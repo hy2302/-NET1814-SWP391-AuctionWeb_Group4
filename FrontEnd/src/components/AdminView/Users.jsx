@@ -1,12 +1,22 @@
-import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
-import '../Layouts/Users.css'
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../Layouts/Users.css';
 
 const Users = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
     const [isEditing, setIsEditing] = useState(false);
-    const [currentUser, setCurrentUser] = useState({ id: null, name: '', email: '', status: 'Active', role: 'User' });
+    const [currentUser, setCurrentUser] = useState({
+        id: null,
+        role_id: '',
+        user_name: '',
+        password: '',
+        user_email: '',
+        contact_number: '',
+        user_address: '',
+        status: 'Active',
+        role: 'User'
+    });
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
@@ -15,7 +25,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/admin/GetUsers');
+            const response = await fetch('http://localhost:5074/api/Admin/users');
             const data = await response.json();
             setUsers(data);
         } catch (error) {
@@ -25,12 +35,12 @@ const Users = () => {
 
     const handleCreate = async (user) => {
         try {
-            const response = await fetch('http://localhost:5074/api/admin/users', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(user),
+            const response = await fetch('http://localhost:5074/Admin/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
             });
             const newUser = await response.json();
             setUsers([...users, newUser]);
@@ -42,12 +52,12 @@ const Users = () => {
 
     const handleEdit = async (user) => {
         try {
-            const response = await fetch(`http://localhost:5074/api/admin/users/5/${user.id}`, {
-              method: 'PUT',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              body: JSON.stringify(user),
+            const response = await fetch(`http://localhost:5074/api/Admin/users/${user.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
             });
             const updatedUser = await response.json();
             setUsers(users.map(u => (u.id === updatedUser.id ? updatedUser : u)));
@@ -60,7 +70,7 @@ const Users = () => {
 
     const handleDelete = async (userId) => {
         try {
-            await fetch(`http://localhost:5074/api/admin/users/5/${userId}`, { method: 'DELETE' });
+            await fetch(`http://localhost:5074/api/Admin/users/${userId}`, { method: 'DELETE' });
             setUsers(users.filter(user => user.id !== userId));
         } catch (error) {
             console.error('Error deleting user:', error);
@@ -74,7 +84,17 @@ const Users = () => {
     };
 
     const openCreateModal = () => {
-        setCurrentUser({ id: null, name: '', email: '', status: 'Active', role: 'User' });
+        setCurrentUser({
+            id: null,
+            role_id: '',
+            user_name: '',
+            password: '',
+            user_email: '',
+            contact_number: '',
+            user_address: '',
+            status: 'Active',
+            role: 'User'
+        });
         setIsEditing(false);
         setIsModalOpen(true);
     };
@@ -88,35 +108,39 @@ const Users = () => {
                 <table className="user-table">
                     <thead>
                         <tr>
-                            <th>Name</th>
+                            <th>Username</th>
                             <th>Email</th>
+                            <th>Contact Number</th>
+                            <th>Address</th>
                             <th>Status</th>
-                            <th>Role</th>
+                            <th>Role ID</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                      {users.map(user => (
-                        <tr key={user.id}>
-                            <td>{user.name}</td>
-                            <td>{user.email}</td>
-                            <td>{user.status}</td>
-                            <td>{user.role}</td>
-                            <td>
-                                <button className="edit-button" onClick={() => openEditModal(user)}>Edit</button>
-                                <button className="delete-button" onClick={() => handleDelete(user.id)}>Delete</button>
-                            </td>
-                        </tr>
-                      ))}
+                        {users.map(user => (
+                            <tr key={user.id}>
+                                <td>{user.user_name}</td>
+                                <td>{user.user_email}</td>
+                                <td>{user.contact_number}</td>
+                                <td>{user.user_address}</td>
+                                <td>{user.status}</td>
+                                <td>{user.role_id}</td>
+                                <td>
+                                    <button className="edit-button" onClick={() => openEditModal(user)}>Edit</button>
+                                    <button className="delete-button" onClick={() => handleDelete(user.id)}>Delete</button>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
                 {isModalOpen && (
-                  <UserModal
-                      user={currentUser}
-                      isEditing={isEditing}
-                      onSave={isEditing ? handleEdit : handleCreate}
-                      onClose={() => setIsModalOpen(false)}
-                  />
+                    <UserModal
+                        user={currentUser}
+                        isEditing={isEditing}
+                        onSave={isEditing ? handleEdit : handleCreate}
+                        onClose={() => setIsModalOpen(false)}
+                    />
                 )}
             </div>
         </div>
@@ -125,6 +149,10 @@ const Users = () => {
 
 const UserModal = ({ user, isEditing, onSave, onClose }) => {
     const [formData, setFormData] = useState(user);
+
+    useEffect(() => {
+        setFormData(user);
+    }, [user]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -141,24 +169,44 @@ const UserModal = ({ user, isEditing, onSave, onClose }) => {
             <div className="modal-content">
                 <h2>{isEditing ? 'Edit User' : 'Create User'}</h2>
                 <form onSubmit={handleSubmit}>
-                    <label>Name:
-                        <input type="text" name="name" value={formData.name} onChange={handleChange} required/>
+                    <label>
+                        Role ID:
+                        <input type="text" name="role_id" value={formData.role_id} onChange={handleChange} required />
                     </label>
-                    <label>Email:
-                        <input type="email" name="email" value={formData.email} onChange={handleChange} required/>
+                    <label>
+                        Username:
+                        <input type="text" name="user_name" value={formData.user_name} onChange={handleChange} required />
                     </label>
-                    <label>Status:
+                    <label>
+                        Password:
+                        <input type="password" name="password" value={formData.password} onChange={handleChange} required />
+                    </label>
+                    <label>
+                        Email:
+                        <input type="email" name="user_email" value={formData.user_email} onChange={handleChange} required />
+                    </label>
+                    <label>
+                        Contact Number:
+                        <input type="tel" name="contact_number" value={formData.contact_number} onChange={handleChange} required />
+                    </label>
+                    <label>
+                        Address:
+                        <input type="text" name="user_address" value={formData.user_address} onChange={handleChange} required />
+                    </label>
+                    <label>
+                        Status:
                         <select name="status" value={formData.status} onChange={handleChange} required>
                             <option value="Active">Active</option>
                             <option value="Inactive">Inactive</option>
                         </select>
                     </label>
-                    <label>Role:
+                    <label>
+                        Role:
                         <select name="role" value={formData.role} onChange={handleChange} required>
                             <option value="Admin">Admin</option>
-                            <option value="User">Staff</option>
-                            <option value="User">Buyer</option>
-                            <option value="User">Seller</option>
+                            <option value="Staff">Staff</option>
+                            <option value="Buyer">Buyer</option>
+                            <option value="Seller">Seller</option>
                         </select>
                     </label>
                     <div className="modal-actions">
@@ -171,4 +219,4 @@ const UserModal = ({ user, isEditing, onSave, onClose }) => {
     );
 };
 
-export default Users
+export default Users;

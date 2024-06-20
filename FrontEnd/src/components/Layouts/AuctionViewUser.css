@@ -10,13 +10,13 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #3a2d2d;
 }
 
 .auction-header .logo {
     font-size: 24px;
     font-weight: bold;
-    color: #333;
+    color: #8b8282;
 }
 
 .auction-nav a {
@@ -37,9 +37,9 @@
 
 .categories-section, .upcoming-auctions-section {
     padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #918585;
     border-radius: 4px;
-    background-color: #f9f9f9;
+    background-color: #9b9292;
 }
 
 .categories-section h2, .upcoming-auctions-section h2 {
@@ -50,24 +50,26 @@
     display: flex;
     gap: 10px;
 }
-
+h2 {
+    color: black;
+}
 .categories-list a {
     padding: 10px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #9b8585;
     border-radius: 4px;
     text-decoration: none;
-    color: #333;
-    background-color: #fff;
+    color: #867a7a;
+    background-color: #6a4f4f;
 }
 
 .categories-list a:hover {
     background-color: #007bff;
-    color: #fff;
+    color: #745555;
 }
 
 .auction-footer {
     text-align: center;
     padding: 10px 0;
-    border-top: 1px solid #ddd;
+    border-top: 1px solid #796f6f;
     margin-top: 20px;
 }

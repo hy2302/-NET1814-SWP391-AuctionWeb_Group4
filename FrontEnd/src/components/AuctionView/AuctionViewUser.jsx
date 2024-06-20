@@ -1,23 +1,35 @@
 import React, { useState, useEffect } from 'react';
 import Upcoming from './Upcoming';
-import '../layouts/AuctionViewUser.css';
+import '../Layouts/AuctionViewUser.css';
 
 const AuctionViewUser = () => {
-    const [categories, setCategories] = useState([]);
+    const [jewelryTypes, setJewelryTypes] = useState([]);
+    const [jewelryItems, setJewelryItems] = useState([]);
     const [upcomingAuctions, setUpcomingAuctions] = useState([]);
 
     useEffect(() => {
-        fetchCategories();
+        fetchJewelryTypes();
+        fetchJewelryItems();
         fetchUpcomingAuctions();
     }, []);
 
-    const fetchCategories = async () => {
+    const fetchJewelryTypes = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/categories');
+            const response = await fetch('http://localhost:5074/api/JewelryType');
             const data = await response.json();
-            setCategories(data);
+            setJewelryTypes(data);
         } catch (error) {
-            console.error('Error fetching categories:', error);
+            console.error('Error fetching jewelry types:', error);
+        }
+    };
+
+    const fetchJewelryItems = async () => {
+        try {
+            const response = await fetch('http://localhost:5074/api/Jewelry');
+            const data = await response.json();
+            setJewelryItems(data);
+        } catch (error) {
+            console.error('Error fetching jewelry items:', error);
         }
     };
 
@@ -37,17 +49,30 @@ const AuctionViewUser = () => {
                 <div className="logo">AuctionLogo</div>
                 <nav className="auction-nav">
                     <a href="/">Home</a>
-                    <a href="/abouts">About</a>
+                    <a href="/about">About</a>
                 </nav>
             </header>
             <main className="auction-main">
                 <section className="categories-section">
-                    <h2>Categories</h2>
+                    <h2>Jewelry Types</h2>
                     <div className="categories-list">
-                        {categories.map(category => (
-                            <a key={category.id} href={`/category/${category.slug}`}>
-                                {category.name}
+                        {jewelryTypes.map(jewelryType => (
+                            <a key={jewelryType.jewelry_type_id} href={`/jewelry-type/${jewelryType.jewelry_type_id}`}>
+                                {jewelryType.jewelry_type_name}
                             </a>
+                        ))}
+                    </div>
+                </section>
+                <section className="jewelry-items-section">
+                    <h2 >Jewelry Items</h2>
+                    <div className="jewelry-items-list">
+                        {jewelryItems.map(jewelry => (
+                            <div key={jewelry.jewelry_id} className="jewelry-item">
+                                <img src={jewelry.jewelry_image} alt={jewelry.jewelry_name} />
+                                <h3>{jewelry.jewelry_name}</h3>
+                                <p>{jewelry.jewelry_description}</p>
+                                <p>Status: {jewelry.jewelry_status}</p>
+                            </div>
                         ))}
                     </div>
                 </section>
