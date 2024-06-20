@@ -4,7 +4,7 @@ import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home.jsx'
 import Footer from './components/HeaderFooter/MainFooter.jsx'
-import AuctionViewUser from './components/auctionView/AuctionViewUser.jsx'
+import AuctionViewUser from './components/AuctionView/AuctionViewUser.jsx'
 
 function App() {
     const [nav, setNav] = useState(true);

@@ -1,6 +1,6 @@
 import React from 'react'
-import PieChart from '../charts/PieChart'
-import LineChart from '../charts/LineChart'
+import PieChart from '../Charts/PieChart'
+import LineChart from '../Charts/LineChart'
 
 const ChartView = () => {
     return (

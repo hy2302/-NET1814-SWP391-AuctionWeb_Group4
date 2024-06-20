@@ -1,6 +1,6 @@
 import React from 'react';
 import Upcoming from './Upcoming';
-import '../layouts/AuctionViewUser.css';
+import '../Layouts/AuctionViewUser.css';
 
 const AuctionViewUser = () => {
     return (
