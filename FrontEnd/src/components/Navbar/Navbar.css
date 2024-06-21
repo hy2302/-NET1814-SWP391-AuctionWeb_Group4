@@ -34,7 +34,8 @@
 }
 
 .navbar-header a:hover, 
-.navbar-header span:hover {
+.navbar-header span:hover,
+.navbar-header button:hover {
     background-color: #191919;
     padding: 6px;
     border-radius: 30px;
@@ -75,9 +76,4 @@
     color: #191919;
     background: transparent;
     transition: background-color 0.5s, color 0.5s;
-}
-
-.navbar-header button:hover {
-    background-color: rgb(243, 243, 243);
-    color: #7e57c2;
 }
