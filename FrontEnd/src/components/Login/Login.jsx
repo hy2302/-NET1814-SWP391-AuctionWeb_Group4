@@ -43,12 +43,10 @@ function Login() {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5074/api/User/Login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(loginData),
+            const response = await axios.post('http://localhost:5074/api/User/Login', loginData, {
+                headers: { 'Content-Type': 'application/json' }
             });
-            const data = await response.json();
+            const data = response.data;
             if (data.token) {
                 navigate('/dashboard');
             } else {
@@ -63,12 +61,10 @@ function Login() {
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5074/api/User/Registration', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(signupData),
+            const response = await axios.post('http://localhost:5074/api/User/Registration', signupData, {
+                headers: { 'Content-Type': 'application/json' }
             });
-            const data = await response.json();
+            const data = response.data;
             if (data.success) {
                 setSignUpActive(false);
             } else {

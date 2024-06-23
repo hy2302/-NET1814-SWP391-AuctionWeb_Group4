@@ -40,7 +40,6 @@ const Navbar = ({ nav }) => {
             <div className='navbar-header'>
                 <span onClick={handleHomeClick}>Home</span>
                 <span onClick={() => navigate('/auctionview')}>Auction</span>
-                <span onClick={() => navigate('/dashboard')}>Dashboard</span>
                 <Link to="policy" spy={true} smooth={true} offset={-100} duration={500} onSetActive={setClick}>Policy</Link>
                 <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onSetActive={setClick}>About</Link>
                 <button className="login-btn" onClick={() => navigate('/login')}>Join Us</button>
