@@ -64,7 +64,7 @@
 .navbar-header button {
     cursor: pointer;
     height: 4.5vh;
-    width: 5.5vw;
+    width: 6vw;
     border-radius: 3vh;
     font-size: 2.4vh;
     font-weight: bold;
@@ -76,4 +76,10 @@
     color: #191919;
     background: transparent;
     transition: background-color 0.5s, color 0.5s;
+}
+
+@media (width < 1500px) { 
+    .navbar-header button {
+        width: 85px;
+    }
 }
