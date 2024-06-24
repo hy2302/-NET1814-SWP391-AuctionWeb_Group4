@@ -22,359 +22,43 @@ namespace AuctionWebAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("AuctionWebAPI.Models.Auction.AuctionRequest", b =>
-                {
-                    b.Property<int?>("RequestId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("RequestId"));
-
-                    b.Property<decimal?>("FinalValuation")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<decimal?>("InitialValuation")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int?>("JewelryId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("RequestDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("RequestStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SellerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("RequestId");
-
-                    b.HasIndex("JewelryId");
-
-                    b.HasIndex("SellerId");
-
-                    b.ToTable("AuctionRequests");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Auction.Auction_Model", b =>
-                {
-                    b.Property<int?>("AuctionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("AuctionId"));
-
-                    b.Property<string>("AuctionStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("EndTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal?>("FinalPrice")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int?>("JewelryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("StaffId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime?>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<decimal?>("StartingPrice")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.HasKey("AuctionId");
-
-                    b.HasIndex("JewelryId");
-
-                    b.HasIndex("StaffId");
-
-                    b.ToTable("Auctions");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Bid.Bids", b =>
-                {
-                    b.Property<int?>("BidId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("BidId"));
-
-                    b.Property<int?>("AuctionId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("BidAmount")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<string>("BidStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("BidTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int?>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BidId");
-
-                    b.HasIndex("AuctionId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("Bids");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Jewelry.Jewel", b =>
-                {
-                    b.Property<int?>("JewelryId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("JewelryId"));
-
-                    b.Property<string>("JewelryDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JewelryImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JewelryName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("JewelryStatus")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("JewelryTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("OwnerId")
-                        .HasColumnType("int");
-
-                    b.HasKey("JewelryId");
-
-                    b.HasIndex("JewelryTypeId");
-
-                    b.HasIndex("OwnerId");
-
-                    b.ToTable("Jewelries");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Jewelry.JewelryType", b =>
-                {
-                    b.Property<int?>("JewelryTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("JewelryTypeId"));
-
-                    b.Property<string>("JewelryTypeName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("JewelryTypeId");
-
-                    b.ToTable("JewelryTypes");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Transaction.Transactions", b =>
-                {
-                    b.Property<int?>("TransactionId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("TransactionId"));
-
-                    b.Property<int?>("AuctionId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal?>("TotalAmount")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<decimal?>("TransactionFee")
-                        .HasColumnType("decimal(18, 2)");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("TransactionId");
-
-                    b.HasIndex("AuctionId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Transactions");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Users.Role", b =>
-                {
-                    b.Property<int?>("RoleId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("RoleId"));
-
-                    b.Property<string>("RoleName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("RoleId");
-
-                    b.ToTable("Roles");
-                });
-
             modelBuilder.Entity("AuctionWebAPI.Models.Users.User", b =>
                 {
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("UserId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"));
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IsActive")
+                        .HasColumnType("int");
+
                     b.Property<string>("Number")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Username")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Auction.AuctionRequest", b =>
-                {
-                    b.HasOne("AuctionWebAPI.Models.Jewelry.Jewel", "Jewelry")
-                        .WithMany("AuctionRequests")
-                        .HasForeignKey("JewelryId");
-
-                    b.HasOne("AuctionWebAPI.Models.Users.User", "Seller")
-                        .WithMany("AuctionRequests")
-                        .HasForeignKey("SellerId");
-
-                    b.Navigation("Jewelry");
-
-                    b.Navigation("Seller");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Auction.Auction_Model", b =>
-                {
-                    b.HasOne("AuctionWebAPI.Models.Jewelry.Jewel", "Jewelry")
-                        .WithMany("Auctions")
-                        .HasForeignKey("JewelryId");
-
-                    b.HasOne("AuctionWebAPI.Models.Users.User", "Staff")
-                        .WithMany("Auctions")
-                        .HasForeignKey("StaffId");
-
-                    b.Navigation("Jewelry");
-
-                    b.Navigation("Staff");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Bid.Bids", b =>
-                {
-                    b.HasOne("AuctionWebAPI.Models.Auction.Auction_Model", "Auction")
-                        .WithMany("Bids")
-                        .HasForeignKey("AuctionId");
-
-                    b.HasOne("AuctionWebAPI.Models.Users.User", "Customer")
-                        .WithMany("Bids")
-                        .HasForeignKey("CustomerId");
-
-                    b.Navigation("Auction");
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Jewelry.Jewel", b =>
-                {
-                    b.HasOne("AuctionWebAPI.Models.Jewelry.JewelryType", "JewelryType")
-                        .WithMany("Jewelries")
-                        .HasForeignKey("JewelryTypeId");
-
-                    b.HasOne("AuctionWebAPI.Models.Users.User", "Owner")
-                        .WithMany("Jewelries")
-                        .HasForeignKey("OwnerId");
-
-                    b.Navigation("JewelryType");
-
-                    b.Navigation("Owner");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Transaction.Transactions", b =>
-                {
-                    b.HasOne("AuctionWebAPI.Models.Auction.Auction_Model", "Auction")
-                        .WithMany("Transactions")
-                        .HasForeignKey("AuctionId");
-
-                    b.HasOne("AuctionWebAPI.Models.Users.User", "User")
-                        .WithMany("Transactions")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Auction");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Users.User", b =>
-                {
-                    b.HasOne("AuctionWebAPI.Models.Users.Role", "Role")
-                        .WithMany("Users")
-                        .HasForeignKey("RoleId");
-
-                    b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Auction.Auction_Model", b =>
-                {
-                    b.Navigation("Bids");
-
-                    b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Jewelry.Jewel", b =>
-                {
-                    b.Navigation("AuctionRequests");
-
-                    b.Navigation("Auctions");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Jewelry.JewelryType", b =>
-                {
-                    b.Navigation("Jewelries");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Users.Role", b =>
-                {
-                    b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("AuctionWebAPI.Models.Users.User", b =>
-                {
-                    b.Navigation("AuctionRequests");
-
-                    b.Navigation("Auctions");
-
-                    b.Navigation("Bids");
-
-                    b.Navigation("Jewelries");
-
-                    b.Navigation("Transactions");
                 });
 #pragma warning restore 612, 618
         }
