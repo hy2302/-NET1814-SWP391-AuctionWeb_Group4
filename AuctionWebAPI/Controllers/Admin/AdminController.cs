@@ -1,5 +1,9 @@
 ﻿
 using AuctionWebAPI.Models;
+<<<<<<< HEAD
+=======
+using AuctionWebAPI.Models.Admin;
+>>>>>>> master
 using AuctionWebAPI.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

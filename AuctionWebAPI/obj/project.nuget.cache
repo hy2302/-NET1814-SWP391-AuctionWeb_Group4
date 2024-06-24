@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "ci1LPPR9+LlHXAiIMJuIpVB+bmr930B1SqPj48TPl05POfHoUb4MVuPGMf3B5gC6+FT/bOJwECItrVkhaqV1wA==",
   "success": true,
   "projectFilePath": "D:\\SWP\\ProjectGit\\AuctionWebAPI\\AuctionWebAPI.csproj",
+=======
+  "dgSpecHash": "ha4EYO+oBZ3OgnPs1AW61maTO7eTHBGgXR1Nx27FYGovzZsrcRLZQseF6VceuDwY5F+1d3C8Krr6+KNWVA1TsQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ADMIN\\OneDrive\\Máy tính\\SWP_proj\\AuctionWebAPI\\AuctionWebAPI.csproj",
+>>>>>>> master
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
@@ -87,16 +93,5 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.WebApi.Core 5.3.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.WebApi.Core",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  "logs": []
 }

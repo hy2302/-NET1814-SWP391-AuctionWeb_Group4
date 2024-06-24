@@ -1,0 +1,81 @@
+.histories {
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column; 
+}
+
+.histories h1 {
+  padding-top: 30px;
+  margin-bottom: 1.5rem;
+  color: #3f3b3b;
+  font-size: 40px;
+  text-align: center;
+}
+
+.history-section {
+  margin-bottom: 2rem;
+}
+
+.history-section h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+.history-table {
+  display: flexbox;
+  align-self: center;
+  justify-content: center;
+  width: 1200px;
+  border-collapse: collapse;
+  background: #e1dbdb;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-grow: 1;
+}
+
+.history-table th, .history-table td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.history-table th {
+  background-color: #007BFF;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.history-table tr {
+  transition: background-color 0.3s;
+}
+
+.history-table tr:hover {
+  background-color: #e9ecef;
+}
+
+.history-table td {
+  color: #333;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+  color: #ffffff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
