@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import user_icon from '../../assets/person.png'
 import key_icon from '../../assets/password.png'
@@ -48,7 +48,13 @@ function Login() {
             });
             const data = response.data;
             if (data.token) {
-                navigate('/dashboard');
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                if (data.user.role.roleName === 'admin') {
+                    navigate('/dashboard');
+                } else {
+                    navigate('/*');
+                }
             } else {
                 alert(data.message);
             }
