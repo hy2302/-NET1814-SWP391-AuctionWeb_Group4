@@ -5,6 +5,11 @@ import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home.jsx'
 import Footer from './components/HeaderFooter/MainFooter.jsx'
 import AuctionViewUser from './components/AuctionView/AuctionViewUser.jsx'
+import ProtectedRoutes from "./utils/ProtectedRoutes.jsx"
+import Dashboard from './components/AdminView/Dashboard.jsx'
+import Users from './components/AdminView/Users.jsx'
+import Histories from './components/AdminView/Histories.jsx'
+import AppraisalForm from './components/staffView/AppraisalForm.jsx'
 
 function App() {
     const [nav, setNav] = useState(true);
@@ -29,7 +34,13 @@ function App() {
             <Navbar nav={nav} />
             <Routes>
                 <Route path="/*" element={<Home />} />
-                <Route path="/Auctionviewuser" element={<AuctionViewUser />} />
+                <Route path="/auctionviewuser" element={<AuctionViewUser />} />
+                <Route element={<ProtectedRoutes/>}>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                    <Route path="/users" element={<Users />} />
+                    <Route path="/histories" element={<Histories />} />
+                    <Route path="/appraisals" element={<AppraisalForm/>}/>
+                </Route>
             </Routes>
             <Footer />
         </>
