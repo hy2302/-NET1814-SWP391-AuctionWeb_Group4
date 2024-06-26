@@ -53,18 +53,39 @@ const AuctionViewUser = () => {
                 </nav>
             </header>
             <main className="auction-main">
-                <section className="categories-section">
-                    <h2>Jewelry Types</h2>
-                    <div className="categories-list">
-                        {jewelryTypes.map(jewelryType => (
-                            <a key={jewelryType.jewelry_type_id} href={`/jewelry-type/${jewelryType.jewelry_type_id}`}>
-                                {jewelryType.jewelry_type_name}
-                            </a>
-                        ))}
+                <section className="filter-section">
+                    <div className="filter-header">
+                        <h2>Filter by</h2>
+                    </div>
+                    <div className="price-filter">
+                        <h3>Initial price range</h3>
+                        <input type="range" min="100" max="500" />
+                    </div>
+                    <div className="category-filter">
+                        <h3>Categories</h3>
+                        <ul>
+                            <li>General (12)</li>
+                            <li>Bracelets (5)</li>
+                            <li>Watches (8)</li>
+                            <li>Rings (8)</li>
+                        </ul>
+                    </div>
+                    <div className="display-filter">
+                        <h3>Display</h3>
+                        <ul>
+                            <li>Upcoming items</li>
+                            <li>Ongoing items</li>
+                            <li>Past items</li>
+                        </ul>
                     </div>
                 </section>
                 <section className="jewelry-items-section">
-                    <h2 >Jewelry Items</h2>
+                    <div className="search-bar">
+                        <input type="text" placeholder="Enter auction keyword" />
+                        <select>
+                            <option value="ending-soonest">Sort by: Ending soonest</option>
+                        </select>
+                    </div>
                     <div className="jewelry-items-list">
                         {jewelryItems.map(jewelry => (
                             <div key={jewelry.jewelry_id} className="jewelry-item">
@@ -75,10 +96,7 @@ const AuctionViewUser = () => {
                             </div>
                         ))}
                     </div>
-                </section>
-                <section className="upcoming-auctions-section">
-                    <h2>Upcoming Auctions</h2>
-                    <Upcoming auctions={upcomingAuctions} />
+                    <button className="load-more">Load more</button>
                 </section>
             </main>
             <footer className="auction-footer">

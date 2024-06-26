@@ -46,3 +46,29 @@
     flex: 1;
     margin: 0 1rem;
 }
+
+.income-summary, .fee-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.income-card, .fee-card {
+    flex: 1;
+    margin: 0 10px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.income-card h2, .fee-card h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.income-card p, .fee-card p {
+    margin: 5px 0;
+    color: #666;
+}
