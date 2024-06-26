@@ -11,17 +11,17 @@ function Policy (){
         {
             image: Auction,
             title: "Live Auction",
-            text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+            text: "Experience the excitement of our live jewelry auctions, where treasures find new homes.",
         },
         {
             image: Money,
             title: "Secure Transaction",
-            text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+            text: "Shop with confidence knowing that all transactions are securely encrypted.",
         },
         {
             image: Delivery,
             title: "Fast Delivery",
-            text: "Lorem ipsum dolor sit amet consectetur. Maecenas orci et lorem ipsum",
+            text: "Enjoy swift and reliable delivery, ensuring your jewelry reaches you promptly.",
         },
     ];
 
@@ -35,8 +35,8 @@ function Policy (){
                     <div className="policy-section-bottom">
                         <h1 className="primary-heading">OUR PRIVATE POLICY</h1>
                         <p className="primary-text">
-                        Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-                        elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+                        At our website, we protect your personal information with a strict privacy policy and advanced security measures. 
+                        Your data is always safe with us.
                         </p>
                     </div>
                 </div>
@@ -45,8 +45,8 @@ function Policy (){
                 <div className="work-section-top">
                     <h1 className="primary-heading">HOW IT WORKS</h1>
                     <p className="primary-text">
-                    Lorem ipsum dolor sit amet consectetur. Non tincidunt magna non et
-                    elit. Dolor turpis molestie dui magnis facilisis at fringilla quam.
+                    Join our live auctions to bid on stunning jewelry pieces in real-time, connecting with 
+                    fellow enthusiasts and finding your next treasure.
                     </p>
                 </div>
                 <div className="work-section-bottom">
