@@ -1,5 +1,4 @@
-﻿using AuctionWebAPI.Models.Admin;
-using AuctionWebAPI.Models.Auction;
+﻿using AuctionWebAPI.Models.Auction;
 using AuctionWebAPI.Models.Bid;
 using AuctionWebAPI.Models.Jewelry;
 using AuctionWebAPI.Models.Transaction;
@@ -16,7 +15,6 @@ namespace AuctionWebAPI.Models
         }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
-
         public DbSet<JewelryType> JewelryTypes { get; set; }
         public DbSet<Jewel> Jewelries { get; set; }
         public DbSet<Auction_Model> Auctions { get; set; }
@@ -90,11 +88,5 @@ namespace AuctionWebAPI.Models
 
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<UserA> UserAs { get; set; }
-       
-        
-
-
     }
 }

@@ -1,0 +1,9 @@
+.footer {
+  width: 100%;
+  background-color: #333; /* Dark background color */
+  color: #fff; /* Light text color */
+  padding: 1rem; /* Add padding for better spacing */
+  position: fixed; /* Fix the footer to the bottom of the viewport */
+  bottom: 0; /* Align the footer to the bottom */
+  left: 0; /* Align the footer to the left */
+}
