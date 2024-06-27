@@ -91,7 +91,7 @@ namespace AuctionWebAPI.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<UserA> UserAs { get; set; }
+        public DbSet<UserA_A> UserAs { get; set; }
        
         
 

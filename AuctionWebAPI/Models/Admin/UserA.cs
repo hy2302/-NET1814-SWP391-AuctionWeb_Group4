@@ -1,6 +1,6 @@
 ﻿namespace AuctionWebAPI.Models.Admin
 {
-    public class UserA
+    public class UserA_A
     {
         public int Id { get; set; }
         public string? Username { get; set; }

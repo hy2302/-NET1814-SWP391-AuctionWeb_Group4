@@ -53,7 +53,7 @@ namespace AuctionWebAPI.Controllers
 
         // POST: api/admin/users
         [HttpPost("users")]
-        public async Task<ActionResult<User>> PostUser(UserA user)
+        public async Task<ActionResult<User>> PostUser(UserA_A user)
         {
             _context.UserAs.Add(user);
             await _context.SaveChangesAsync();
@@ -63,7 +63,7 @@ namespace AuctionWebAPI.Controllers
 
         // PUT: api/admin/users/5
         [HttpPut("users/{id}")]
-        public async Task<IActionResult> PutUser(int id, UserA user)
+        public async Task<IActionResult> PutUser(int id, UserA_A user)
         {
             if (id != user.Id)
             {
