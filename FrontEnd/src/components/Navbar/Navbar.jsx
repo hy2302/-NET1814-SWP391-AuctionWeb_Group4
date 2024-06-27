@@ -4,7 +4,6 @@ import { Link } from "react-scroll"
 import '../Navbar/Navbar.css'
 import ImageSlider from '../Home/ImageSlider'
 import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
 
 const Navbar = ({ nav }) => {
     const navigate = useNavigate();
