@@ -6,18 +6,12 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("AllowReactApp",
-        builder => builder.WithOrigins("http://localhost:5173")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader());
-});
 
 builder.Services.AddAuthentication(options =>
 {
@@ -38,20 +32,19 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddDbContext<MyDbContext>(e => e.UseSqlServer(builder.Configuration.GetConnectionString("DBCS")));
-
 var app = builder.Build();
+
 app.UseAuthentication();
 
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Enable CORS
-app.UseCors("AllowReactApp");
-app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
