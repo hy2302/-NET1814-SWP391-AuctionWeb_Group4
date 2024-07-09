@@ -35,7 +35,7 @@ const AuctionViewUser = () => {
 
     const fetchUpcomingAuctions = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/upcoming-auctions');
+            const response = await fetch('http://localhost:5074/api/Auction');
             const data = await response.json();
             setUpcomingAuctions(data);
         } catch (error) {
