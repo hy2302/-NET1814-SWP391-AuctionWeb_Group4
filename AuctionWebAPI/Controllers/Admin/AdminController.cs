@@ -1,4 +1,4 @@
-﻿
+﻿using System;
 using AuctionWebAPI.Models;
 using AuctionWebAPI.Models.Users;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace AuctionWebAPI.Controllers
 {
@@ -26,7 +27,62 @@ namespace AuctionWebAPI.Controllers
         {
             var userCount = await _context.Users.CountAsync();
             var jewelryCount = await _context.Jewelries.CountAsync();
-            return new { UserCount = userCount, JewelryCount = jewelryCount };
+
+            // Current month totals
+            // Current month totals
+            var totalAmountNow = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == DateTime.Now.Month &&
+                            t.TransactionDate.Value.Year == DateTime.Now.Year)
+                .SumAsync(t => t.TotalAmount ?? 0);
+
+            var transactionFeeNow = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == DateTime.Now.Month &&
+                            t.TransactionDate.Value.Year == DateTime.Now.Year)
+                .SumAsync(t => t.TransactionFee ?? 0);
+
+            var finalPriceNow = await _context.Auctions
+                .Where(a => a.EndTime.HasValue &&
+                            a.EndTime.Value.Month == DateTime.Now.Month &&
+                            a.EndTime.Value.Year == DateTime.Now.Year)
+                .SumAsync(a => a.FinalPrice);
+
+            // Last month totals
+            var lastMonth = DateTime.Now.AddMonths(-1);
+            var totalAmountLastMonth = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == lastMonth.Month &&
+                            t.TransactionDate.Value.Year == lastMonth.Year)
+                .SumAsync(t => t.TotalAmount ?? 0);
+
+            var transactionFeeLastMonth = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == lastMonth.Month &&
+                            t.TransactionDate.Value.Year == lastMonth.Year)
+                .SumAsync(t => t.TransactionFee ?? 0);
+
+            var finalPriceLastMonth = await _context.Auctions
+                .Where(a => a.EndTime.HasValue &&
+                            a.EndTime.Value.Month == lastMonth.Month &&
+                            a.EndTime.Value.Year == lastMonth.Year)
+                .SumAsync(a => a.FinalPrice);
+
+
+
+
+
+            return new
+            {
+                UserCount = userCount,
+                JewelryCount = jewelryCount,
+                TotalAmountNow = totalAmountNow,
+                TransactionFeeNow = transactionFeeNow,
+                FinalPriceNow = finalPriceNow,
+                TotalAmountLastMonth = totalAmountLastMonth,
+                TransactionFeeLastMonth = transactionFeeLastMonth,
+                FinalPriceLastMonth = finalPriceLastMonth
+            };
         }
 
         // GET: api/admin/users

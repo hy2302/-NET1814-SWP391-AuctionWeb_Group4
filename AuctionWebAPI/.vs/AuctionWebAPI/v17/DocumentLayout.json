@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\auction\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:models\\auction\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\transaction\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:models\\transaction\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\controllers\\auction\\auctionrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:controllers\\auction\\auctionrequestcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +33,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\users\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:models\\users\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\transaction\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:models\\transaction\\transaction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\jewelry\\jewelrytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,16 +59,8 @@
       "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:models\\auction\\auction_history.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\auction\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:models\\auction\\auction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\controllers\\auction\\auctioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:controllers\\auction\\auctioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|solutionrelative:controllers\\admin\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{142BE681-6F02-47F7-B75F-8D42118BBCB8}|AuctionWebAPI.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\swp_proj\\auctionwebapi\\models\\mydbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -148,44 +148,12 @@
           "SelectedChildIndex": 7,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-07-09T12:17:08.101Z"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "Auction_History.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction_History.cs",
-              "RelativeDocumentMoniker": "Models\\Auction\\Auction_History.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction_History.cs",
-              "RelativeToolTip": "Models\\Auction\\Auction_History.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T11:37:24.673Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AuctionRequest.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\AuctionRequest.cs",
-              "RelativeDocumentMoniker": "Models\\Auction\\AuctionRequest.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\AuctionRequest.cs",
-              "RelativeToolTip": "Models\\Auction\\AuctionRequest.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAxAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T11:35:22.293Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "Bid.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Bid\\Bid.cs",
               "RelativeDocumentMoniker": "Models\\Bid\\Bid.cs",
@@ -197,7 +165,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "JewelryController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Jewelry\\JewelryController.cs",
               "RelativeDocumentMoniker": "Controllers\\Jewelry\\JewelryController.cs",
@@ -209,7 +177,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 9,
               "Title": "Jewelry.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Jewelry\\Jewelry.cs",
               "RelativeDocumentMoniker": "Models\\Jewelry\\Jewelry.cs",
@@ -221,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -233,13 +201,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "AuctionRequestController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Auction\\AuctionRequestController.cs",
               "RelativeDocumentMoniker": "Controllers\\Auction\\AuctionRequestController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Auction\\AuctionRequestController.cs",
               "RelativeToolTip": "Controllers\\Auction\\AuctionRequestController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAC4BAAANAAAA",
+              "ViewState": "AQIAAB0BAAAAAAAAAAAmwE0BAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-27T03:49:58.035Z",
               "EditorCaption": ""
@@ -258,7 +226,82 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Admin\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\Admin\\AdminController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Admin\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\Admin\\AdminController.cs",
+              "ViewState": "AQIAADsAAAAAAAAAAAAAwEUAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T03:18:01.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Transaction.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Transaction\\Transaction.cs",
+              "RelativeDocumentMoniker": "Models\\Transaction\\Transaction.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Transaction\\Transaction.cs",
+              "RelativeToolTip": "Models\\Transaction\\Transaction.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAAAAgAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T11:28:24.33Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Auction.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction.cs",
+              "RelativeDocumentMoniker": "Models\\Auction\\Auction.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction.cs",
+              "RelativeToolTip": "Models\\Auction\\Auction.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAiwBIAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-19T03:13:41.724Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuctionRequest.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\AuctionRequest.cs",
+              "RelativeDocumentMoniker": "Models\\Auction\\AuctionRequest.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\AuctionRequest.cs",
+              "RelativeToolTip": "Models\\Auction\\AuctionRequest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T11:35:22.293Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Auction_History.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction_History.cs",
+              "RelativeDocumentMoniker": "Models\\Auction\\Auction_History.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction_History.cs",
+              "RelativeToolTip": "Models\\Auction\\Auction_History.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-09T11:37:24.673Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAABzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-09T12:17:08.101Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -270,19 +313,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Auction.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction.cs",
-              "RelativeDocumentMoniker": "Models\\Auction\\Auction.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Auction\\Auction.cs",
-              "RelativeToolTip": "Models\\Auction\\Auction.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAA5wA0AAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T03:13:41.724Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 8,
               "Title": "JewelryType.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Jewelry\\JewelryType.cs",
               "RelativeDocumentMoniker": "Models\\Jewelry\\JewelryType.cs",
@@ -294,19 +325,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Transaction.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Transaction\\Transaction.cs",
-              "RelativeDocumentMoniker": "Models\\Transaction\\Transaction.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Transaction\\Transaction.cs",
-              "RelativeToolTip": "Models\\Transaction\\Transaction.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAAAAAA4AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-09T11:28:24.33Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 7,
               "Title": "Role.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Models\\Users\\Role.cs",
               "RelativeDocumentMoniker": "Models\\Users\\Role.cs",
@@ -318,7 +337,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "AuctionController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Auction\\AuctionController.cs",
               "RelativeDocumentMoniker": "Controllers\\Auction\\AuctionController.cs",
@@ -327,18 +346,6 @@
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-27T03:49:57.548Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Admin\\AdminController.cs",
-              "RelativeDocumentMoniker": "Controllers\\Admin\\AdminController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\OneDrive\\M\u00E1y t\u00EDnh\\SWP_proj\\AuctionWebAPI\\Controllers\\Admin\\AdminController.cs",
-              "RelativeToolTip": "Controllers\\Admin\\AdminController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACoAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-19T03:18:01.296Z"
             },
             {
               "$type": "Document",
@@ -555,10 +562,6 @@
               "ViewState": "AQIAAKwAAAAAAAAAAAD4v70AAAAEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2024-06-19T03:28:44.988Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
             }
           ]
         }
