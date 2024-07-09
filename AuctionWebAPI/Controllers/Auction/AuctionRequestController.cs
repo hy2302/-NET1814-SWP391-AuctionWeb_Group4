@@ -106,46 +106,6 @@ namespace AuctionWebAPI.Controllers
             return Ok(requests);
         }
 
-        // User: Approve/Decline Initial Valuation
-        [HttpPut("{userId}/approve-initial/{id}")]
-        public async Task<IActionResult> ApproveInitialValuation(int id, [FromBody] bool approve)
-        {
-            var request = await _context.AuctionRequests.FindAsync(id);
-            if (request == null) return NotFound();
-
-            if (approve)
-            {
-                request.RequestStatus = "Initial Valuation Accepted";
-            }
-            else
-            {
-                request.RequestStatus = "Declined";
-            }
-            await _context.SaveChangesAsync();
-
-            return Ok(request);
-        }
-        // User: Accept/Declined Final Valuation
-        [HttpPut("{userId}/accept-final-valuation/{id}")]
-        public async Task<IActionResult> AcceptFinalValuation(int id, [FromBody] bool approve)
-        {
-            var request = await _context.AuctionRequests.FindAsync(id);
-            if (request == null) return NotFound();
-
-          
-            if (approve)
-            {
-                request.RequestStatus = "Auction Request Completed";
-            }
-            else
-            {
-                request.RequestStatus = "Declined";
-            }
-            await _context.SaveChangesAsync();
-
-            return Ok(request);
-        }
-
         // Staff: Send Initial Valuation
         [HttpPut("staff/send-initial-valuation/{id}")]
         public async Task<IActionResult> SendInitialValuation(int id, [FromBody] decimal initialValuation)
@@ -164,6 +124,57 @@ namespace AuctionWebAPI.Controllers
 
             return Ok(request);
         }
+
+        // User: Approve/Decline Initial Valuation
+        [HttpPut("{userId}/approve-initial/{id}")]
+        public async Task<IActionResult> ApproveInitialValuation(int id, [FromBody] bool approve)
+        {
+
+            var request = await _context.AuctionRequests.FindAsync(id);
+            if (request == null) return NotFound();
+            if (request.RequestStatus != "Initial Valuation Created")
+            {
+                return BadRequest("Initial valuation can only be sent when status is 'Initial Valuation Created'.");
+            }
+
+            if (approve)
+            {
+                request.RequestStatus = "Initial Valuation Accepted";
+            }
+            else
+            {
+                request.RequestStatus = "Declined";
+            }
+            await _context.SaveChangesAsync();
+
+            return Ok(request);
+        }
+        // User: Accept/Declined Final Valuation
+        [HttpPut("{userId}/approve-final-valuation/{id}")]
+        public async Task<IActionResult> AcceptFinalValuation(int id, [FromBody] bool approve)
+        {
+            var request = await _context.AuctionRequests.FindAsync(id);
+            if (request == null) return NotFound();
+            if (request.RequestStatus != "Final Valuation Verified")
+            {
+                return BadRequest("Valuation can only be sent when Final Valuation is verified");
+            }
+
+
+            if (approve)
+            {
+                request.RequestStatus = "Auction Request Completed";
+            }
+            else
+            {
+                request.RequestStatus = "Declined";
+            }
+            await _context.SaveChangesAsync();
+
+            return Ok(request);
+        }
+
+        
 
         // Staff: Request User to Send Jewelry
         [HttpPut("staff/request-jewelry/{id}")]
@@ -189,6 +200,10 @@ namespace AuctionWebAPI.Controllers
         {
             var request = await _context.AuctionRequests.FindAsync(id);
             if (request == null) return NotFound();
+            if (request.RequestStatus != "Request Jewelry")
+            {
+                return BadRequest("Jewelry request can not be send");
+            }
 
             request.RequestStatus = "Jewelry Being Delivered";
             await _context.SaveChangesAsync();
@@ -202,6 +217,10 @@ namespace AuctionWebAPI.Controllers
         {
             var request = await _context.AuctionRequests.FindAsync(id);
             if (request == null) return NotFound();
+            if (request.RequestStatus != "Jewelry Being Delivered")
+            {
+                return BadRequest("The Jewel has been delivered");
+            }
 
             request.RequestStatus = "Jewelry Received";
             await _context.SaveChangesAsync();
@@ -215,6 +234,10 @@ namespace AuctionWebAPI.Controllers
         {
             var request = await _context.AuctionRequests.FindAsync(id);
             if (request == null) return NotFound();
+            if (request.RequestStatus != "Jewelry Received")
+            {
+                return BadRequest("The Jewel has not been received for Final Valuation");
+            }
 
             request.FinalValuation = finalValuation;
             request.RequestStatus = "Final Valuation Created";
@@ -229,6 +252,10 @@ namespace AuctionWebAPI.Controllers
         {
             var request = await _context.AuctionRequests.FindAsync(id);
             if (request == null) return NotFound();
+            if (request.RequestStatus != "Final Valuation Created")
+            {
+                return BadRequest("The Jewel's final valuation has not been created");
+            }
 
             if (approve)
             {
