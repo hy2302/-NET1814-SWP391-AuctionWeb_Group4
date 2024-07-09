@@ -125,6 +125,26 @@ namespace AuctionWebAPI.Controllers
 
             return Ok(request);
         }
+        // User: Accept/Declined Final Valuation
+        [HttpPut("{userId}/accept-final-valuation/{id}")]
+        public async Task<IActionResult> AcceptFinalValuation(int id, [FromBody] bool approve)
+        {
+            var request = await _context.AuctionRequests.FindAsync(id);
+            if (request == null) return NotFound();
+
+          
+            if (approve)
+            {
+                request.RequestStatus = "Auction Request Completed";
+            }
+            else
+            {
+                request.RequestStatus = "Declined";
+            }
+            await _context.SaveChangesAsync();
+
+            return Ok(request);
+        }
 
         // Staff: Send Initial Valuation
         [HttpPut("staff/send-initial-valuation/{id}")]
@@ -223,18 +243,7 @@ namespace AuctionWebAPI.Controllers
             return Ok(request);
         }
 
-        // User: Accept Final Valuation
-        [HttpPut("{userId}/accept-final-valuation/{id}")]
-        public async Task<IActionResult> AcceptFinalValuation(int id)
-        {
-            var request = await _context.AuctionRequests.FindAsync(id);
-            if (request == null) return NotFound();
-
-            request.RequestStatus = "Auction Request Completed";
-            await _context.SaveChangesAsync();
-
-            return Ok(request);
-        }
+     
 
         // Staff: View Auction Requests with Statuses "Auction Request Created" and "Jewelry Being Delivered"
         [HttpGet("staff/requests")]
@@ -259,6 +268,7 @@ namespace AuctionWebAPI.Controllers
                                          .ToListAsync();
             return Ok(requests);
         }
+
 
         // Manager: View Auction Requests with Statuses "Auction Request Completed", "Declined", and "Final Valuation Created"
         [HttpGet("manager/requests")]
