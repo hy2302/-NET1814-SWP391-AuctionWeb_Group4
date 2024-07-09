@@ -24,7 +24,7 @@ namespace AuctionWebAPI.Controllers
         }
 
         // User: Create Request with Image Upload
-        [HttpPost("create")]
+        [HttpPost("{userId}/create")]
         public async Task<IActionResult> CreateRequest([FromForm] AuctionRequestDTO arDto)
         {
             if (!ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace AuctionWebAPI.Controllers
         }
 
         // User: View All Requests
-        [HttpGet("requests/{userId}")]
+        [HttpGet("{userId}/requests")]
         public async Task<IActionResult> ViewRequests(int userId)
         {
             var requests = await _context.AuctionRequests
@@ -107,7 +107,7 @@ namespace AuctionWebAPI.Controllers
         }
 
         // User: Approve/Decline Initial Valuation
-        [HttpPut("user/approve-initial/{id}")]
+        [HttpPut("{userId}/approve-initial/{id}")]
         public async Task<IActionResult> ApproveInitialValuation(int id, [FromBody] bool approve)
         {
             var request = await _context.AuctionRequests.FindAsync(id);
@@ -164,7 +164,7 @@ namespace AuctionWebAPI.Controllers
         }
 
         // User: Send Jewelry for Valuation
-        [HttpPut("user/send-jewelry/{id}")]
+        [HttpPut("{userId}/send-jewelry/{id}")]
         public async Task<IActionResult> SendJewelry(int id)
         {
             var request = await _context.AuctionRequests.FindAsync(id);
@@ -224,7 +224,7 @@ namespace AuctionWebAPI.Controllers
         }
 
         // User: Accept Final Valuation
-        [HttpPut("user/accept-final-valuation/{id}")]
+        [HttpPut("{userId}/accept-final-valuation/{id}")]
         public async Task<IActionResult> AcceptFinalValuation(int id)
         {
             var request = await _context.AuctionRequests.FindAsync(id);
