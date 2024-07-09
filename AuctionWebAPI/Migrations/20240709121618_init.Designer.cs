@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionWebAPI.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20240613042241_init")]
+    [Migration("20240709121618_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -24,6 +24,43 @@ namespace AuctionWebAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("AuctionWebAPI.Models.Auction.AuctionHistory", b =>
+                {
+                    b.Property<int?>("HistoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("HistoryId"));
+
+                    b.Property<int?>("AuctionId")
+                        .HasColumnType("int");
+
+                    b.Property<decimal?>("FinalPrice")
+                        .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime?>("HistoryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("JewelryId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HistoryId");
+
+                    b.HasIndex("AuctionId");
+
+                    b.HasIndex("JewelryId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("AuctionHistories");
+                });
 
             modelBuilder.Entity("AuctionWebAPI.Models.Auction.AuctionRequest", b =>
                 {
@@ -141,7 +178,11 @@ namespace AuctionWebAPI.Migrations
                     b.Property<string>("JewelryDescription")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("JewelryImage")
+                    b.Property<byte[]>("JewelryImage")
+                        .IsRequired()
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<string>("JewelryImageName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("JewelryName")
@@ -192,8 +233,14 @@ namespace AuctionWebAPI.Migrations
                     b.Property<int?>("AuctionId")
                         .HasColumnType("int");
 
+                    b.Property<int>("AuctionRequestRequestId")
+                        .HasColumnType("int");
+
                     b.Property<decimal?>("TotalAmount")
                         .HasColumnType("decimal(18, 2)");
+
+                    b.Property<DateTime?>("TransactionDate")
+                        .HasColumnType("datetime2");
 
                     b.Property<decimal?>("TransactionFee")
                         .HasColumnType("decimal(18, 2)");
@@ -204,6 +251,8 @@ namespace AuctionWebAPI.Migrations
                     b.HasKey("TransactionId");
 
                     b.HasIndex("AuctionId");
+
+                    b.HasIndex("AuctionRequestRequestId");
 
                     b.HasIndex("UserId");
 
@@ -257,6 +306,27 @@ namespace AuctionWebAPI.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("AuctionWebAPI.Models.Auction.AuctionHistory", b =>
+                {
+                    b.HasOne("AuctionWebAPI.Models.Auction.Auction_Model", "Auction")
+                        .WithMany("AuctionHistories")
+                        .HasForeignKey("AuctionId");
+
+                    b.HasOne("AuctionWebAPI.Models.Jewelry.Jewel", "Jewelry")
+                        .WithMany("AuctionHistories")
+                        .HasForeignKey("JewelryId");
+
+                    b.HasOne("AuctionWebAPI.Models.Users.User", "User")
+                        .WithMany("AuctionHistories")
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("Auction");
+
+                    b.Navigation("Jewelry");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("AuctionWebAPI.Models.Auction.AuctionRequest", b =>
@@ -325,11 +395,19 @@ namespace AuctionWebAPI.Migrations
                         .WithMany("Transactions")
                         .HasForeignKey("AuctionId");
 
+                    b.HasOne("AuctionWebAPI.Models.Auction.AuctionRequest", "AuctionRequest")
+                        .WithMany()
+                        .HasForeignKey("AuctionRequestRequestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("AuctionWebAPI.Models.Users.User", "User")
                         .WithMany("Transactions")
                         .HasForeignKey("UserId");
 
                     b.Navigation("Auction");
+
+                    b.Navigation("AuctionRequest");
 
                     b.Navigation("User");
                 });
@@ -345,6 +423,8 @@ namespace AuctionWebAPI.Migrations
 
             modelBuilder.Entity("AuctionWebAPI.Models.Auction.Auction_Model", b =>
                 {
+                    b.Navigation("AuctionHistories");
+
                     b.Navigation("Bids");
 
                     b.Navigation("Transactions");
@@ -352,6 +432,8 @@ namespace AuctionWebAPI.Migrations
 
             modelBuilder.Entity("AuctionWebAPI.Models.Jewelry.Jewel", b =>
                 {
+                    b.Navigation("AuctionHistories");
+
                     b.Navigation("AuctionRequests");
 
                     b.Navigation("Auctions");
@@ -369,6 +451,8 @@ namespace AuctionWebAPI.Migrations
 
             modelBuilder.Entity("AuctionWebAPI.Models.Users.User", b =>
                 {
+                    b.Navigation("AuctionHistories");
+
                     b.Navigation("AuctionRequests");
 
                     b.Navigation("Auctions");

@@ -1,172 +1,176 @@
 ﻿using AuctionWebAPI.Models;
 using AuctionWebAPI.Models.Jewelry;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace AuctionWebAPI.Controllers.Jewelry
+namespace AuctionWebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class JewelryController : ControllerBase
     {
-        private readonly MyDbContext dbContext;
-        private readonly IConfiguration configuration;
+        private readonly MyDbContext _context;
+
         public JewelryController(MyDbContext context)
         {
-            dbContext = context;
+            _context = context;
         }
-        //CRUD method for Jewel
+
+        // Get all jewelry
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<JewelryDTO>>> GetJewels()
+        public async Task<IActionResult> GetAllJewelry()
         {
-            if (dbContext.Jewelries == null)
-            {
-                return NotFound();
-            }
-
-            var jewels = await dbContext.Jewelries
-                .Select(j => new JewelryDTO
-                {
-                    JewelryId = j.JewelryId,
-                    OwnerId = j.OwnerId,
-                    JewelryTypeId = j.JewelryTypeId,
-                    JewelryName = j.JewelryName,
-                    JewelryDescription = j.JewelryDescription,
-                    JewelryImage = j.JewelryImage,
-                    JewelryStatus = j.JewelryStatus
-                })
-                .ToListAsync();
-
-            return Ok(jewels);
+            var jewelry = await _context.Jewelries.ToListAsync();
+            return Ok(jewelry);
         }
 
-        // GET: api/Jewelry/5
+        // Get jewelry by id
         [HttpGet("{id}")]
-        public async Task<ActionResult<JewelryDTO>> GetJewel(int id)
+        public async Task<IActionResult> GetJewelryById(int id)
         {
-            if (dbContext.Jewelries == null)
+            var jewelry = await _context.Jewelries.FindAsync(id);
+
+            if (jewelry == null)
             {
                 return NotFound();
             }
 
-            var jewel = await dbContext.Jewelries
-                .Select(j => new JewelryDTO
-                {
-                    JewelryId = j.JewelryId,
-                    OwnerId = j.OwnerId,
-                    JewelryTypeId = j.JewelryTypeId,
-                    JewelryName = j.JewelryName,
-                    JewelryDescription = j.JewelryDescription,
-                    JewelryImage = j.JewelryImage,
-                    JewelryStatus = j.JewelryStatus
-                })
-                .FirstOrDefaultAsync(j => j.JewelryId == id);
-
-            if (jewel == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(jewel);
+            return Ok(jewelry);
         }
 
-        // POST: api/Jewelry
+        // Add new jewelry
         [HttpPost]
-        public async Task<ActionResult<JewelryDTO>> PostJewel(JewelryDTO jewelDto)
+        public async Task<IActionResult> CreateJewelry([FromForm] JewelryDTO jewelryDto)
         {
-            var jewel = new Jewel
+            if (!ModelState.IsValid)
             {
-                OwnerId = jewelDto.OwnerId,
-                JewelryTypeId = jewelDto.JewelryTypeId,
-                JewelryName = jewelDto.JewelryName,
-                JewelryDescription = jewelDto.JewelryDescription,
-                JewelryImage = jewelDto.JewelryImage,
-                JewelryStatus = jewelDto.JewelryStatus
+                return BadRequest(ModelState);
+            }
+
+            byte[] imageData;
+            string imageName;
+
+            if (jewelryDto.JewelryImage != null && jewelryDto.JewelryImage.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    await jewelryDto.JewelryImage.CopyToAsync(ms);
+                    imageData = ms.ToArray();
+                }
+
+                imageName = jewelryDto.JewelryImage.FileName;
+
+                if (!IsValidImage(imageData))
+                {
+                    return BadRequest("Invalid image format. Only PNG and JPEG are supported.");
+                }
+            }
+            else
+            {
+                return BadRequest("Image is required.");
+            }
+
+            var jewelry = new Jewel
+            {
+                OwnerId = jewelryDto.OwnerId,
+                JewelryName = jewelryDto.JewelryName,
+                JewelryDescription = jewelryDto.JewelryDescription,
+                JewelryImageName = imageName,
+                JewelryImage = imageData,
+                JewelryStatus = "Available",
+                JewelryTypeId = jewelryDto.JewelryTypeId // Assign JewelryTypeId to the new jewel
             };
 
-            dbContext.Jewelries.Add(jewel);
-            await dbContext.SaveChangesAsync();
+            _context.Jewelries.Add(jewelry);
+            await _context.SaveChangesAsync();
 
-            jewelDto.JewelryId = jewel.JewelryId;
-
-            return Ok("Jewelry Successfully Created");
+            return Ok(jewelry);
         }
 
-        // PUT: api/Jewelry/5
+        // Update jewelry
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutJewel(int id, JewelryDTO jewelDto)
+        public async Task<IActionResult> UpdateJewelry(int id, [FromForm] JewelryDTO jewelryDto)
         {
-            if (id != jewelDto.JewelryId)
+            if (id != jewelryDto.JewelryId)
             {
-                return BadRequest();
+                return BadRequest("Jewelry ID mismatch.");
             }
 
-            var jewel = await dbContext.Jewelries.FindAsync(id);
-            if (jewel == null)
+            var jewelry = await _context.Jewelries.FindAsync(id);
+            if (jewelry == null)
             {
                 return NotFound();
             }
 
-            jewel.OwnerId = jewelDto.OwnerId;
-            jewel.JewelryTypeId = jewelDto.JewelryTypeId;
-            jewel.JewelryName = jewelDto.JewelryName;
-            jewel.JewelryDescription = jewelDto.JewelryDescription;
-            jewel.JewelryImage = jewelDto.JewelryImage;
-            jewel.JewelryStatus = jewelDto.JewelryStatus;
+            byte[] imageData = jewelry.JewelryImage;
+            string imageName = jewelry.JewelryImageName;
 
-            dbContext.Entry(jewel).State = EntityState.Modified;
+            if (jewelryDto.JewelryImage != null && jewelryDto.JewelryImage.Length > 0)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    await jewelryDto.JewelryImage.CopyToAsync(ms);
+                    imageData = ms.ToArray();
+                }
 
+                imageName = jewelryDto.JewelryImage.FileName;
+
+                if (!IsValidImage(imageData))
+                {
+                    return BadRequest("Invalid image format. Only PNG and JPEG are supported.");
+                }
+            }
+
+            jewelry.JewelryName = jewelryDto.JewelryName;
+            jewelry.JewelryDescription = jewelryDto.JewelryDescription;
+            jewelry.JewelryImageName = imageName;
+            jewelry.JewelryImage = imageData;
+            jewelry.JewelryTypeId = jewelryDto.JewelryTypeId; // Update JewelryTypeId
+
+            await _context.SaveChangesAsync();
+
+            return Ok(jewelry);
+        }
+
+        // Delete jewelry
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteJewelry(int id)
+        {
+            var jewelry = await _context.Jewelries.FindAsync(id);
+            if (jewelry == null)
+            {
+                return NotFound();
+            }
+
+            _context.Jewelries.Remove(jewelry);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        private bool IsValidImage(byte[] imageData)
+        {
             try
             {
-                await dbContext.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!JewelExists(id))
+                using (var ms = new MemoryStream(imageData))
+                using (var img = System.Drawing.Image.FromStream(ms))
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
+                    if (img.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Png) || img.RawFormat.Equals(System.Drawing.Imaging.ImageFormat.Jpeg))
+                    {
+                        return true;
+                    }
                 }
             }
-
-            return Ok("Jewelry Successfully Updated");
-        }
-
-        // DELETE: api/Jewelry/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteJewel(int id)
-        {
-            if (dbContext.Jewelries == null)
+            catch
             {
-                return NotFound();
+                return false;
             }
 
-            var jewel = await dbContext.Jewelries.FindAsync(id);
-            if (jewel == null)
-            {
-                return NotFound();
-            }
-
-            dbContext.Jewelries.Remove(jewel);
-            await dbContext.SaveChangesAsync();
-
-            var JewelryName = jewel.JewelryName;
-              
-           
-
-            return Ok(new
-            {
-                Message = $"{JewelryName} successfully deleted"
-            });
-        }
-
-        private bool JewelExists(int id)
-        {
-            return dbContext.Jewelries.Any(e => e.JewelryId == id);
+            return false;
         }
     }
 }

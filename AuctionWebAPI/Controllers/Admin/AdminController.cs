@@ -1,6 +1,5 @@
 ﻿
 using AuctionWebAPI.Models;
-using AuctionWebAPI.Models.Admin;
 using AuctionWebAPI.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -53,19 +52,19 @@ namespace AuctionWebAPI.Controllers
 
         // POST: api/admin/users
         [HttpPost("users")]
-        public async Task<ActionResult<User>> PostUser(UserA_A user)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.UserAs.Add(user);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
         // PUT: api/admin/users/5
         [HttpPut("users/{id}")]
-        public async Task<IActionResult> PutUser(int id, UserA_A user)
+        public async Task<IActionResult> PutUser(int id, User user)
         {
-            if (id != user.Id)
+            if (id != user.UserId)
             {
                 return BadRequest();
             }
@@ -109,7 +108,7 @@ namespace AuctionWebAPI.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.UserAs.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.UserId == id);
         }
     }
 }

@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddDbContext<MyDbContext>(e => e.UseSqlServer(builder.Configuration.GetConnectionString("DBCS")));
+builder.Services.AddDbContext<MyDbContext>(e => e.UseSqlServer(builder.Configuration.GetConnectionString("Azure")));
 var app = builder.Build();
 
 app.UseAuthentication();

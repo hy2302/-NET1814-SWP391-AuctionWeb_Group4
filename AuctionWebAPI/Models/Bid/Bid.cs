@@ -1,5 +1,6 @@
 ﻿using AuctionWebAPI.Models.Auction;
 using AuctionWebAPI.Models.Users;
+using AuctionWebAPI.Validations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,6 +14,7 @@ namespace AuctionWebAPI.Models.Bid
         public int? AuctionId { get; set; }
         public DateTime? BidTime { get; set; }
         [Column(TypeName = "decimal(18, 2)")]
+        [PriceValidation]
         public decimal? BidAmount { get; set; }
         public string? BidStatus { get; set; }
 

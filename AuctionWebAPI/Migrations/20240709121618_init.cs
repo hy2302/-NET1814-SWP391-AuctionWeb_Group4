@@ -70,7 +70,8 @@ namespace AuctionWebAPI.Migrations
                     JewelryTypeId = table.Column<int>(type: "int", nullable: true),
                     JewelryName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     JewelryDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    JewelryImage = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JewelryImageName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    JewelryImage = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
                     JewelryStatus = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -146,6 +147,39 @@ namespace AuctionWebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "AuctionHistories",
+                columns: table => new
+                {
+                    HistoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AuctionId = table.Column<int>(type: "int", nullable: true),
+                    JewelryId = table.Column<int>(type: "int", nullable: true),
+                    UserId = table.Column<int>(type: "int", nullable: true),
+                    HistoryDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    FinalPrice = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AuctionHistories", x => x.HistoryId);
+                    table.ForeignKey(
+                        name: "FK_AuctionHistories_Auctions_AuctionId",
+                        column: x => x.AuctionId,
+                        principalTable: "Auctions",
+                        principalColumn: "AuctionId");
+                    table.ForeignKey(
+                        name: "FK_AuctionHistories_Jewelries_JewelryId",
+                        column: x => x.JewelryId,
+                        principalTable: "Jewelries",
+                        principalColumn: "JewelryId");
+                    table.ForeignKey(
+                        name: "FK_AuctionHistories_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId");
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Bids",
                 columns: table => new
                 {
@@ -181,11 +215,19 @@ namespace AuctionWebAPI.Migrations
                     AuctionId = table.Column<int>(type: "int", nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: true),
                     TotalAmount = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
-                    TransactionFee = table.Column<decimal>(type: "decimal(18,2)", nullable: true)
+                    TransactionFee = table.Column<decimal>(type: "decimal(18,2)", nullable: true),
+                    TransactionDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    AuctionRequestRequestId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transactions", x => x.TransactionId);
+                    table.ForeignKey(
+                        name: "FK_Transactions_AuctionRequests_AuctionRequestRequestId",
+                        column: x => x.AuctionRequestRequestId,
+                        principalTable: "AuctionRequests",
+                        principalColumn: "RequestId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Transactions_Auctions_AuctionId",
                         column: x => x.AuctionId,
@@ -197,6 +239,21 @@ namespace AuctionWebAPI.Migrations
                         principalTable: "Users",
                         principalColumn: "UserId");
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuctionHistories_AuctionId",
+                table: "AuctionHistories",
+                column: "AuctionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuctionHistories_JewelryId",
+                table: "AuctionHistories",
+                column: "JewelryId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AuctionHistories_UserId",
+                table: "AuctionHistories",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AuctionRequests_JewelryId",
@@ -244,6 +301,11 @@ namespace AuctionWebAPI.Migrations
                 column: "AuctionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Transactions_AuctionRequestRequestId",
+                table: "Transactions",
+                column: "AuctionRequestRequestId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Transactions_UserId",
                 table: "Transactions",
                 column: "UserId");
@@ -258,13 +320,16 @@ namespace AuctionWebAPI.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "AuctionRequests");
+                name: "AuctionHistories");
 
             migrationBuilder.DropTable(
                 name: "Bids");
 
             migrationBuilder.DropTable(
                 name: "Transactions");
+
+            migrationBuilder.DropTable(
+                name: "AuctionRequests");
 
             migrationBuilder.DropTable(
                 name: "Auctions");

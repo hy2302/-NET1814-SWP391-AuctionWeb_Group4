@@ -43,6 +43,7 @@ namespace AuctionWebAPI.Controllers.Users
                     Email = registrationDTO.Email,
                     Number = registrationDTO.Number,
                     Address = registrationDTO.Address,
+                    RoleId = 4
                 });
                 dbContext.SaveChanges();
                 return Ok("User registered successfully");
