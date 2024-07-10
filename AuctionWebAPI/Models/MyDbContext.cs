@@ -1,4 +1,4 @@
-﻿using AuctionWebAPI.Models.Admin;
+﻿
 using AuctionWebAPI.Models.Auction;
 using AuctionWebAPI.Models.Bid;
 using AuctionWebAPI.Models.Jewelry;
@@ -12,26 +12,25 @@ namespace AuctionWebAPI.Models
     {
         public MyDbContext(DbContextOptions<MyDbContext> options) : base(options)
         {
-            
         }
+
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
-
         public DbSet<JewelryType> JewelryTypes { get; set; }
         public DbSet<Jewel> Jewelries { get; set; }
         public DbSet<Auction_Model> Auctions { get; set; }
         public DbSet<Bids> Bids { get; set; }
         public DbSet<Transactions> Transactions { get; set; }
         public DbSet<AuctionRequest> AuctionRequests { get; set; }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-            
+        public DbSet<AuctionHistory> AuctionHistories { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
             // Configure primary keys
             modelBuilder.Entity<Role>()
-               .HasMany(r => r.Users)
-               .WithOne(u => u.Role)
-               .HasForeignKey(u => u.RoleId);
+                .HasMany(r => r.Users)
+                .WithOne(u => u.Role)
+                .HasForeignKey(u => u.RoleId);
 
             modelBuilder.Entity<User>()
                 .HasMany(u => u.Jewelries)
@@ -82,19 +81,30 @@ namespace AuctionWebAPI.Models
                 .HasMany(a => a.Transactions)
                 .WithOne(t => t.Auction)
                 .HasForeignKey(t => t.AuctionId);
-            modelBuilder.Entity<AuctionRequest>()
-            .HasKey(ar => ar.RequestId);
-           //
-           // .HasColumnType("decimal(18, 2)");
 
+            modelBuilder.Entity<AuctionRequest>()
+                .HasKey(ar => ar.RequestId);
+
+            modelBuilder.Entity<AuctionHistory>()
+                .HasKey(ah => ah.HistoryId);
+
+            modelBuilder.Entity<AuctionHistory>()
+                .HasOne(ah => ah.Auction)
+                .WithMany(a => a.AuctionHistories)
+                .HasForeignKey(ah => ah.AuctionId);
+
+            modelBuilder.Entity<AuctionHistory>()
+                .HasOne(ah => ah.Jewelry)
+                .WithMany(j => j.AuctionHistories)
+                .HasForeignKey(ah => ah.JewelryId);
+
+            modelBuilder.Entity<AuctionHistory>()
+                .HasOne(ah => ah.User)
+                .WithMany(u => u.AuctionHistories)
+                .HasForeignKey(ah => ah.UserId);
 
             base.OnModelCreating(modelBuilder);
         }
-
-        public DbSet<UserA_A> UserAs { get; set; }
-       
-        
-
-
     }
+
 }

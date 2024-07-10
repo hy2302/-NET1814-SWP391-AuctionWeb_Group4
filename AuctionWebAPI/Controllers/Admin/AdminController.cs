@@ -1,12 +1,12 @@
-﻿
+﻿using System;
 using AuctionWebAPI.Models;
-using AuctionWebAPI.Models.Admin;
 using AuctionWebAPI.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
 
 namespace AuctionWebAPI.Controllers
 {
@@ -27,7 +27,62 @@ namespace AuctionWebAPI.Controllers
         {
             var userCount = await _context.Users.CountAsync();
             var jewelryCount = await _context.Jewelries.CountAsync();
-            return new { UserCount = userCount, JewelryCount = jewelryCount };
+
+            // Current month totals
+            // Current month totals
+            var totalAmountNow = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == DateTime.Now.Month &&
+                            t.TransactionDate.Value.Year == DateTime.Now.Year)
+                .SumAsync(t => t.TotalAmount ?? 0);
+
+            var transactionFeeNow = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == DateTime.Now.Month &&
+                            t.TransactionDate.Value.Year == DateTime.Now.Year)
+                .SumAsync(t => t.TransactionFee ?? 0);
+
+            var finalPriceNow = await _context.Auctions
+                .Where(a => a.EndTime.HasValue &&
+                            a.EndTime.Value.Month == DateTime.Now.Month &&
+                            a.EndTime.Value.Year == DateTime.Now.Year)
+                .SumAsync(a => a.FinalPrice);
+
+            // Last month totals
+            var lastMonth = DateTime.Now.AddMonths(-1);
+            var totalAmountLastMonth = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == lastMonth.Month &&
+                            t.TransactionDate.Value.Year == lastMonth.Year)
+                .SumAsync(t => t.TotalAmount ?? 0);
+
+            var transactionFeeLastMonth = await _context.Transactions
+                .Where(t => t.TransactionDate.HasValue &&
+                            t.TransactionDate.Value.Month == lastMonth.Month &&
+                            t.TransactionDate.Value.Year == lastMonth.Year)
+                .SumAsync(t => t.TransactionFee ?? 0);
+
+            var finalPriceLastMonth = await _context.Auctions
+                .Where(a => a.EndTime.HasValue &&
+                            a.EndTime.Value.Month == lastMonth.Month &&
+                            a.EndTime.Value.Year == lastMonth.Year)
+                .SumAsync(a => a.FinalPrice);
+
+
+
+
+
+            return new
+            {
+                UserCount = userCount,
+                JewelryCount = jewelryCount,
+                TotalAmountNow = totalAmountNow,
+                TransactionFeeNow = transactionFeeNow,
+                FinalPriceNow = finalPriceNow,
+                TotalAmountLastMonth = totalAmountLastMonth,
+                TransactionFeeLastMonth = transactionFeeLastMonth,
+                FinalPriceLastMonth = finalPriceLastMonth
+            };
         }
 
         // GET: api/admin/users
@@ -53,19 +108,19 @@ namespace AuctionWebAPI.Controllers
 
         // POST: api/admin/users
         [HttpPost("users")]
-        public async Task<ActionResult<User>> PostUser(UserA_A user)
+        public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.UserAs.Add(user);
+            _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
         // PUT: api/admin/users/5
         [HttpPut("users/{id}")]
-        public async Task<IActionResult> PutUser(int id, UserA_A user)
+        public async Task<IActionResult> PutUser(int id, User user)
         {
-            if (id != user.Id)
+            if (id != user.UserId)
             {
                 return BadRequest();
             }
@@ -109,7 +164,7 @@ namespace AuctionWebAPI.Controllers
 
         private bool UserExists(int id)
         {
-            return _context.UserAs.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.UserId == id);
         }
     }
 }

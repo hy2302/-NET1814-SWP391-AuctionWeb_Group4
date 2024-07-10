@@ -12,7 +12,8 @@ namespace AuctionWebAPI.Models.Jewelry
         public int? JewelryTypeId { get; set; }
         public string? JewelryName { get; set; }
         public string? JewelryDescription { get; set; }
-        public string? JewelryImage { get; set; }
+        public string? JewelryImageName { get; set; }
+        public byte[] JewelryImage { get; set; }
         public string? JewelryStatus { get; set; }
 
         // Navigation properties
@@ -21,6 +22,9 @@ namespace AuctionWebAPI.Models.Jewelry
         public ICollection<Auction_Model> Auctions { get; set; }
         public ICollection<AuctionRequest> AuctionRequests { get; set; }
 
+        // Add AuctionHistories navigation property
+        public ICollection<AuctionHistory> AuctionHistories { get; set; }
     }
+
 
 }

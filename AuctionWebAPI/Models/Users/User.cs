@@ -18,10 +18,7 @@ namespace AuctionWebAPI.Models.Users
         public string? Number { get; set; }
         public string? Address { get; set; }
 
-
-
         // Navigation property
-
         public Role Role { get; set; }
         public ICollection<Jewel> Jewelries { get; set; }
         public ICollection<Auction_Model> Auctions { get; set; }
@@ -29,6 +26,8 @@ namespace AuctionWebAPI.Models.Users
         public ICollection<Transactions> Transactions { get; set; }
         public ICollection<AuctionRequest> AuctionRequests { get; set; }
 
-
+        // Add AuctionHistories navigation property
+        public ICollection<AuctionHistory> AuctionHistories { get; set; }
     }
+
 }
