@@ -18,9 +18,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                 <span onClick={() => navigate('/users')}>Users</span>
                             </li>
                             <li>
-                                <span onClick={() => navigate('/histories')}>Histories</span>
-                            </li>
-                            <li>
                                 <Link to="/*">Back to Main</Link>
                             </li>
                         </ul>
