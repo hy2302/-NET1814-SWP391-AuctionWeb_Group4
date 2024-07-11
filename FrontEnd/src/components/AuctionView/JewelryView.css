@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+  
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-section {
+    display: flex;
+    align-items: center;
+}
+
+.filter-button {
+    margin-right: 10px;
+}
+
+.search-bar {
+    margin-top: 20px;
+    margin-left: 10px;
+    padding: 5px;
+    flex-grow: 1;
+    background-color: aliceblue;
+}
+
+.jewelry-content {
+    display: flex;
+}
+
+.sort-sidebar {
+    background-color: #bea5d6;
+    flex: 1;
+    margin-left: 20px;
+    max-width: 200px;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    padding-left: 20px;
+    border-radius: 10px;
+}
+
+.price-range {
+    margin-bottom: 20px;
+}
+
+.jewelry-categories,
+.display {
+    margin-bottom: 20px;
+}
+
+.categories ul,
+.display ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.jewelry-content {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.item-card {
+    width: calc(50% - 10px);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.item-image {
+    width: 100%;
+    height: auto;
+}
+
+.item-details {
+    padding: 10px;
+    text-align: center;
+}
+
+.load-more-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+}
