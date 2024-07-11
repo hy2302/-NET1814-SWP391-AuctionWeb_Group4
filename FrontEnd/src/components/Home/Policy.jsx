@@ -38,6 +38,7 @@ function Policy (){
                         At our website, we protect your personal information with a strict privacy policy and advanced security measures. 
                         Your data is always safe with us.
                         </p>
+                        <button className="discover-btn">Discover More</button>
                     </div>
                 </div>
             </div>

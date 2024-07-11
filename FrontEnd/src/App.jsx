@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home.jsx'
 import Footer from './components/HeaderFooter/MainFooter.jsx'
 import AuctionViewUser from './components/AuctionView/AuctionViewUser.jsx'
+import JewelryView from "./components/AuctionView/JewelryView.jsx"
 
 function App() {
     const [nav, setNav] = useState(true);
@@ -30,6 +31,7 @@ function App() {
             <Routes>
                 <Route path="/*" element={<Home />} />
                 <Route path="/auctionviewuser" element={<AuctionViewUser />} />
+                <Route path="/jewelryview" element={<JewelryView />} />
             </Routes>
             <Footer />
         </>

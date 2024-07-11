@@ -32,3 +32,8 @@
     flex: 1;
     text-align: center;
 }
+
+.discover-btn {
+    margin-top: 50px;
+    background-color: rgb(92, 86, 86);
+}
