@@ -15,7 +15,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/admin/GetUsers');
+            const response = await fetch('http://localhost:5074/api/Admin/users');
             const data = await response.json();
             setUsers(data);
         } catch (error) {

@@ -20,7 +20,6 @@ const Dashboard = () => {
                 <Routes>
                     <Route path="/" element={<ChartView />} />
                     <Route path="/users" element={<Users />} />
-                    <Route path="/histories" element={<Histories />} />
                 </Routes>
             </div>
         </div>
