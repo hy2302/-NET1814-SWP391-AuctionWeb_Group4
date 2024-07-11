@@ -1,62 +1,64 @@
-/* Histories Styles */
 .histories {
-  padding: 2rem;
-  width: 100%; /* Span out the histories section to 100% of the viewport width */
-  margin: 0 auto; /* Center the content horizontally */
-  background: #ffffff; /* White background */
-  border-radius: 12px; /* Rounded corners */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for a modern look */
-  margin-bottom: 60px; /* Adjust margin bottom to accommodate the footer */
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
 }
 
 .histories h1 {
+  padding-top: 30px;
   margin-bottom: 1.5rem;
-  color: #007BFF; /* Primary blue color for the main heading */
-  font-size: 2rem;
+  color: #3f3b3b;
+  font-size: 40px;
   text-align: center;
 }
 
 .history-section {
   margin-bottom: 2rem;
+  width: 90%; /* Make sections responsive */
+  max-width: 1200px; /* Limit the maximum width */
 }
 
 .history-section h2 {
   margin-bottom: 1rem;
-  color: #333; /* Dark gray color for the section headings */
+  color: #333;
   font-size: 1.5rem;
 }
 
 .history-table {
-  width: 100%;
+  width: 100%; /* Take full width of the section */
   border-collapse: collapse;
-  background: #f8f9fa; /* Light gray background for the table */
-  border-radius: 8px; /* Rounded corners */
-  overflow: hidden; /* To apply border radius */
+  background: #e1dbdb;
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 .history-table th, .history-table td {
   text-align: left;
   padding: 1rem;
-  border-bottom: 1px solid #dee2e6; /* Light gray border for table cells */
+  border-bottom: 1px solid #dee2e6;
 }
 
 .history-table th {
-  background-color: #007BFF; /* Primary blue background for table headers */
-  color: #ffffff; /* White text for table headers */
+  background-color: #007BFF;
+  color: #ffffff;
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .history-table tr {
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s;
 }
 
 .history-table tr:hover {
-  background-color: #e9ecef; /* Light gray background on hover */
+  background-color: #e9ecef;
 }
 
 .history-table td {
-  color: #333; /* Dark gray text color for table cells */
+  color: #333;
 }
 
 .button {
@@ -64,15 +66,15 @@
   padding: 0.75rem 1.5rem;
   margin-top: 1.5rem;
   color: #ffffff;
-  background-color: #007BFF; /* Primary blue background for buttons */
+  background-color: #007BFF;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   text-align: center;
   font-size: 1rem;
-  transition: background-color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s;
 }
 
 .button:hover {
-  background-color: #0056b3; /* Darker blue background on hover */
+  background-color: #0056b3;
 }

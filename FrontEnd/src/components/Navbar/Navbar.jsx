@@ -1,12 +1,19 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useNavigate } from 'react-router-dom'
 import { Link } from "react-scroll"
 import '../Navbar/Navbar.css'
 import ImageSlider from '../Home/ImageSlider'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 const Navbar = ({ nav }) => {
     const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [click, setClick] = useState(false);
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn(!!token);
+    }, []);
 
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -18,6 +25,13 @@ const Navbar = ({ nav }) => {
         } else {
             navigate('/*');
         }
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        setIsLoggedIn(false);
+        window.location.reload();
     };
 
     const slides = [
@@ -40,10 +54,19 @@ const Navbar = ({ nav }) => {
             <div className='navbar-header'>
                 <span onClick={handleHomeClick}>Home</span>
                 <span onClick={() => navigate('/auctionview')}>Auction</span>
-                <span onClick={() => navigate('/dashboard')}>Dashboard</span>
                 <Link to="policy" spy={true} smooth={true} offset={-100} duration={500} onSetActive={setClick}>Policy</Link>
                 <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onSetActive={setClick}>About</Link>
-                <button className="login-btn" onClick={() => navigate('/login')}>Join Us</button>
+                {isLoggedIn ? (
+                    <Dropdown>
+                        <Dropdown.Toggle variant="success" id="dropdown-basic" onClick={handleLogout}>
+                            Logout
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu className="custom-dropdown-menu">
+                        </Dropdown.Menu>
+                    </Dropdown>
+                ) : (
+                    <button className="login-btn" onClick={() => navigate('/login')}>Join Us</button>
+                )}
             </div>
         </div>
     );

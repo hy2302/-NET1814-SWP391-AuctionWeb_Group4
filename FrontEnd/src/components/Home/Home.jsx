@@ -1,6 +1,6 @@
 import React from 'react'
 import './Home.css'
-import Upcoming from '../auctionView/Upcoming'
+import Upcoming from '../AuctionView/Upcoming'
 import AboutUs from './AboutUs'
 import Policy from './Policy'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import '../layouts/Sidebar.css'
+import '../Layouts/Sidebar.css'
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
     const navigate = useNavigate();

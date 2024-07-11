@@ -1,12 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from 'react-router-dom';
-import user_icon from '../../assets/person.png';
-import key_icon from '../../assets/password.png';
-import email_icon from '../../assets/email.png';
-import address_icon from '../../assets/address.png';
-import phone_icon from '../../assets/phone.png';
-import './Login.css';
-import Popup from "../Popup/Popup";
+import React, { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom"
+import user_icon from '../../assets/person.png'
+import key_icon from '../../assets/password.png'
+import email_icon from '../../assets/email.png'
+import address_icon from '../../assets/address.png'
+import phone_icon from '../../assets/phone.png'
+import './Login.css'
+import Popup from "../Popup/Popup"
+import axios from "axios"
 
 function Login() {
     const navigate = useNavigate();
@@ -42,16 +43,20 @@ function Login() {
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5074/Login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(loginData),
+            const response = await axios.post('http://localhost:5074/api/User/Login', loginData, {
+                headers: { 'Content-Type': 'application/json' }
             });
-            const data = await response.json();
-            if (data.success) {
-                navigate('/dashboard'); // Redirect to dashboard or appropriate page
+            const data = response.data;
+            if (data.token) {
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                if (data.user.role.roleName === 'admin') {
+                    navigate('/dashboard');
+                } else {
+                    navigate('/*');
+                }
             } else {
-                alert(data.message); // Handle error messages
+                alert(data.message);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -62,16 +67,14 @@ function Login() {
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:5074/Registration', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(signupData),
+            const response = await axios.post('http://localhost:5074/api/User/Registration', signupData, {
+                headers: { 'Content-Type': 'application/json' }
             });
-            const data = await response.json();
+            const data = response.data;
             if (data.success) {
-                setSignUpActive(false); // Switch to login form after successful signup
+                setSignUpActive(false);
             } else {
-                alert(data.message); // Handle error messages
+                alert(data.message);
             }
         } catch (error) {
             console.error('Error:', error);
@@ -163,4 +166,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Login

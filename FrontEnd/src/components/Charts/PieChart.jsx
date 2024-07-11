@@ -18,7 +18,7 @@ const PieChart = () => {
 
   const fetchPieChartData = async () => {
     try {
-      const response = await fetch('http://localhost:5074/api/admin/dashboard');
+      const response = await fetch('http://localhost:5074/api/Admin/dashboard');
       const data = await response.json();
       setChartData(data);
     } catch (error) {
