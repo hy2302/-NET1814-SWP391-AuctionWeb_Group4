@@ -23,9 +23,33 @@
 .search-bar {
     margin-top: 20px;
     margin-left: 10px;
-    padding: 5px;
-    flex-grow: 1;
-    background-color: aliceblue;
+    padding: 7px;
+    background-color: white;
+    width: 45%;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.search-bar:focus {
+    color: black;
+}
+
+.selection-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+}
+
+.selection-box label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.selection-box input[type="checkbox"] {
+    margin-right: 10px;
 }
 
 .jewelry-content {
@@ -33,14 +57,17 @@
 }
 
 .sort-sidebar {
-    background-color: #bea5d6;
+    background-color:rgb(72, 71, 71);
+    margin-top: 50px;
     flex: 1;
     margin-left: 20px;
     max-width: 200px;
     padding-top: 20px;
     padding-bottom: 50px;
-    padding-left: 20px;
     border-radius: 10px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }
 
 .price-range {
@@ -50,12 +77,6 @@
 .jewelry-categories,
 .display {
     margin-bottom: 20px;
-}
-
-.categories ul,
-.display ul {
-    list-style-type: none;
-    padding: 0;
 }
 
 .jewelry-content {
@@ -86,4 +107,8 @@
     display: block;
     margin: 20px auto;
     padding: 10px 20px;
+}
+
+.scroll-btn {
+    margin-bottom: 50px;
 }
