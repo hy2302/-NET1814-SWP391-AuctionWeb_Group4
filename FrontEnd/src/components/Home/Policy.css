@@ -5,7 +5,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: 45%;
-    background-position: 1380px -150px;
+    background-position: 1400px -150px;
+    margin-top: 50px;
 }
 
 .policy-container {
@@ -28,12 +29,24 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
-.policy-section-bottom {
+.policy-section-text {
     flex: 1;
     text-align: center;
+    margin-top: 22px;
+}
+
+.policy-section-text h2 {
+    color: black;
+    font-size: 30px;
+    margin: 10px 0;
+}
+
+.policy-section-text p {
+    margin-top: 13px;
+    font-size: 17px;
 }
 
 .discover-btn {
-    margin-top: 50px;
+    margin-top: 20px;
     background-color: rgb(92, 86, 86);
 }
