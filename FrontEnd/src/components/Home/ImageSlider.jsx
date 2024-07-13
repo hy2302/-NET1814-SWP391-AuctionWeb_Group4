@@ -6,22 +6,22 @@ const ImageSlider = ({ slides, parentWidth }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {
-        const isFirstSlide = currentIndex === 0;
-        const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
+        const isFirst = currentIndex === 0;
+        const newIndex = isFirst ? slides.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     };
 
     const goToNext = useCallback(() => {
-        const isLastSlide = currentIndex === slides.length - 1;
-        const newIndex = isLastSlide ? 0 : currentIndex + 1;
+        const isLast = currentIndex === slides.length - 1;
+        const newIndex = isLast ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     }, [currentIndex, slides]);
 
-    const getSlideStylesWithBackground = (slideIndex) => ({
+    const getSlideInStyle = (slideIndex) => ({
         backgroundImage: `url(${slides[slideIndex].url})`,
     });
 
-    const getSlidesContainerStylesWithWidth = () => ({
+    const getSlidesInWidth = () => ({
         width: `${parentWidth * slides.length}px`,
         transform: `translateX(${-(currentIndex * parentWidth)}px)`,
         transition: "transform 0.5s ease-out",
@@ -49,10 +49,10 @@ const ImageSlider = ({ slides, parentWidth }) => {
                 </div>
             </div>
             <div className="slides-container-overflow">
-                <div style={getSlidesContainerStylesWithWidth()} className="slides-container">
+                <div style={getSlidesInWidth()} className="slides-container">
                     {slides.map((slide, slideIndex) => (
                         <div key={slideIndex} className="slide" style={{ width: parentWidth }}>
-                            <div style={getSlideStylesWithBackground(slideIndex)} className="slide-image"></div>
+                            <div style={getSlideInStyle(slideIndex)} className="slide-image"></div>
                             <div className="slide-content">
                                 <h2>{slide.title}</h2>
                                 <p>{slide.content}</p>

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import './AboutUs.css'
 
-function AboutUs () {
+function AboutUs (){
     const [openIndex, setOpenIndex] = useState(0);
 
     const handleClick = (index) => {

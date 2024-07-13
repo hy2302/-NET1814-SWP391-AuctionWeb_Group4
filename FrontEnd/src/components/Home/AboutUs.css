@@ -53,13 +53,13 @@
 }
 
 .about-us h2 {
-    font-size: 36px;
+    color: black;
+    font-size: 30px;
     margin: 10px 0;
-    color: #000;
 }
 
 .about-us p {
-    font-size: 16px;
+    font-size: 17px;
     color: #666;
     margin: 20px 0;
 }

@@ -32,11 +32,12 @@ function Policy (){
                     <div className="policy-section-img">
                         <img src={PolicyBg}></img>
                     </div>
-                    <div className="policy-section-bottom">
+                    <div className="policy-section-text">
                         <h1 className="primary-heading">OUR PRIVATE POLICY</h1>
+                        <h2>How can we secure your information?</h2>
                         <p className="primary-text">
-                        At our website, we protect your personal information with a strict privacy policy and advanced security measures. 
-                        Your data is always safe with us.
+                            At our website, we protect your personal information with a strict privacy policy and advanced security measures. 
+                            Your data is always safe with us.
                         </p>
                         <button className="discover-btn">Discover More</button>
                     </div>
@@ -45,9 +46,10 @@ function Policy (){
             <div className="work-section-policy">
                 <div className="work-section-top">
                     <h1 className="primary-heading">HOW IT WORKS</h1>
+                    <h2>Join, Bid And Win</h2>
                     <p className="primary-text">
-                    Join our live auctions to bid on stunning jewelry pieces in real-time, connecting with 
-                    fellow enthusiasts and finding your next treasure.
+                        Join our live auctions to bid on stunning jewelry pieces in real-time, connecting with 
+                        fellow enthusiasts and finding your next treasure.
                     </p>
                 </div>
                 <div className="work-section-bottom">
