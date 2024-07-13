@@ -56,6 +56,13 @@
     color: white;
 }
 
+.navbar-black .navbar-header a:hover,
+.navbar-black .navbar-header span:hover,
+.navbar-black .navbar-header button:hover {
+    background-color: white;
+    color: black;
+}
+
 .navbar-black .navbar-header button {
     color: white;
     border-color: white;

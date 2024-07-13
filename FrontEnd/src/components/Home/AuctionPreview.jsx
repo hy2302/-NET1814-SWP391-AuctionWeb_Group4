@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import './AuctionPreview.css';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './AuctionPreview.css'
 
 const products = [
     { id: 1, name: 'Diamond Ring', category: 'Diamond', price: 30.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180' },
@@ -13,11 +14,12 @@ const products = [
     { id: 9, name: 'Emerald Gem', category: 'Emerald', price: 30.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180' },
 ];
 
-const categories = ['All', 'Diamond', 'Ruby', 'Sliver', 'Gold', 'Topaz', 'Emerald'];
+const categories = ['General', 'Diamond', 'Ruby', 'Sliver', 'Gold', 'Topaz', 'Emerald'];
 const maxPerLine = 4;
 
 function AuctionPreview() {
-    const [selectedCategory, setSelectedCategory] = useState('All');
+    const navigate = useNavigate();
+    const [selectedCategory, setSelectedCategory] = useState('General');
     const [currentSet, setCurrentSet] = useState(0);
 
     const handleCategoryChangeClick = (category) => {
@@ -25,11 +27,11 @@ function AuctionPreview() {
         setCurrentSet(0);
     };
 
-    const filteredProducts = selectedCategory == 'All'
+    const filteredProducts = selectedCategory === 'General'
         ? products
-        : products.filter(product => product.category == selectedCategory);
+        : products.filter(product => product.category === selectedCategory);
 
-    const totalSet = Math.ceil(filteredProducts.length/4);
+    const totalSet = Math.ceil(filteredProducts.length / 4);
     const currentJewelries = filteredProducts.slice(currentSet * maxPerLine, (currentSet + 1) * maxPerLine);
 
     const handleNextPage = () => {
@@ -60,16 +62,21 @@ function AuctionPreview() {
                 ))}
             </div>
             <div className="jewelry-list-container">
-                <button onClick={handlePrevPage} disabled={currentSet == 0}>❰</button>
+                <button onClick={handlePrevPage} disabled={currentSet === 0}>❰</button>
                 <div className="jewelry-list">
                     {currentJewelries.map(product => (
                         <div key={product.id} className="jewelry-card">
                             <img src={product.image} alt={product.name} />
                             <h2>{product.name}</h2>
                             <p>{product.category}</p>
-                            <p><span className="start-price">Start price: </span> ${product.price.toFixed(2)}</p>
+                            <p><span className="start-price">Start price: </span>${product.price.toFixed(2)}</p>
                         </div>
                     ))}
+                    {currentSet === totalSet - 1 && (
+                        <div className="view-more-container">
+                            <button onClick={() => navigate('/jewelryview')}><span>...</span></button>
+                        </div>
+                    )}
                 </div>
                 <button onClick={handleNextPage} disabled={currentSet === totalSet - 1}>❱</button>
             </div>
@@ -77,4 +84,4 @@ function AuctionPreview() {
     );
 }
 
-export default AuctionPreview;
+export default AuctionPreview

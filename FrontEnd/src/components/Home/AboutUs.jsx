@@ -10,7 +10,7 @@ function AboutUs (){
     };
 
     const items = [
-        { title: 'Introduction', content: 'We are a leading auction platform dedicated to providing a seamless and secure auction experience for both buyers and sellers. Our team is passionate about delivering exceptional service and helping you find unique and valuable items.'},
+        { title: 'Introduction', content: 'We are a leading auction platform dedicated to providing a seamless and secure auction experience for both buyers and sellers, helping you find unique and valuable items.'},
         { title: 'Mission and Vision', content: 'Our mission is to connect buyers and sellers through a transparent and trustworthy auction process, ensuring satisfaction and value for all parties involved.'},
         { title: 'Services Offered', content: 'We host various types of auctions including live auctions, silent auctions, and online-only auctions to cater to different preferences and needs.'},
     ];
@@ -21,7 +21,7 @@ function AboutUs (){
                 <div className="about-us">
                     <h1 className="primary-heading">ABOUT US</h1>
                     <h2>What Makes Us Today?</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravid risus commodo.</p>
+                    <p>With a legacy of excellence, we curate extraordinary pieces that embody timeless beauty and exceptional craftsmanship. Join us as we redefine luxury and sophistication in the world of fine jewelry auctions.</p>
                 </div>
                 <div className="accordion">
                     {items.map((item, index) => (

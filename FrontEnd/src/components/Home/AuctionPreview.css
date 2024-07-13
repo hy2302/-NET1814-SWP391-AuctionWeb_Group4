@@ -1,3 +1,13 @@
+.preview-content {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.preview-content h2 {
+    color: rgb(70, 66, 66);
+    font-size: 30px;
+    margin: 10px 0;
+}
 .categories {
     display: flex;
     justify-content: center;
@@ -9,30 +19,51 @@
     color: black;
     margin: 0 10px;
     padding: 10px 20px;
-    border: 1px solid black;
+    border: 2px solid;
     background-color: #f1f1f1;
-    cursor: pointer;
 }
 
 .categories button.active {
-    background-color: #494949;;
+    background-color: #494949;
     color: white;
+}
+
+.jewelry-list-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.jewelry-list-container button {
+    background: #494949;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 10px;
 }
 
 .jewelry-list {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
-    transition: opacity 0.3s ease-in-out;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    width: 80%;
+}
+
+.jewelry-list.fade {
+    opacity: 0;
 }
 
 .jewelry-card {
-    border: 1px solid black;
+    border: 1px solid #5d5b5b;
     margin: 10px;
     padding: 20px;
     width: 200px;
     text-align: center;
-    color: black;
+    color: #494949;
+    border-radius: 10px;
 }
 
 .jewelry-card img {
@@ -40,29 +71,58 @@
     height: auto;
 }
 
+.jewelry-card h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
 .preview-content h1 {
     color: #7e57c2;
     font-size: 36px;
 }
 
-.preview-content h2 {
-    color: black;
-    font-size: 25px;
-    margin: 5px 0;
-}
-
-.preview-content { 
+.preview-content {
     margin-top: 50px;
 }
 
-.jewelry-list-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+.start-price {
+    color: rgb(223, 18, 18);
+    font-weight: bold;
 }
 
-.start-price {
-    color: rgb(178, 11, 11);
+.view-more-container {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    width: 50px;
+    margin-top: 140px;
+}
+
+.view-more-container button {
+    border: 1px solid #494949;
+    background-color: transparent;
+    color: #494949;
+    font-size: 20px;
     font-weight: bold;
+}
+
+button:hover {
+    background-color: #7e57c2;
+    color: white;
+    cursor: pointer;
+}
+
+.categories button:hover {
+    background-color: #7e57c2;
+    color: white;
+}
+
+.jewelry-list-container button:hover {
+    background-color: #7e57c2;
+}
+
+.view-more-container button:hover {
+    background-color: #676767;
+    color: white;
 }
