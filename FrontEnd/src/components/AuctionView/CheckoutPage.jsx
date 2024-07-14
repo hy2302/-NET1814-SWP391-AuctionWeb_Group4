@@ -11,9 +11,9 @@ const CheckoutPage = () => {
         fetchTransactions();
     }, []);
 
-    const fetchTransactions = async () => {
+    const fetchTransactions = async (transactionId) => {
         try {
-            const response = await axios.get('/api/Transaction');
+            const response = await axios.get('/api/Transaction/${transactionId}');
             setTransactions(response.data);
         } catch (error) {
             console.error('Error fetching transactions:', error);
