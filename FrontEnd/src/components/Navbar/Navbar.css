@@ -13,7 +13,7 @@
 .navbar-header {
     display: flex;
     position: fixed;
-    width: 100vw;
+    width: 110vw;
     height: 7vh;
     align-items: center;
     justify-content: center;
@@ -54,6 +54,13 @@
 .navbar-black .navbar-header a,
 .navbar-black .navbar-header span {
     color: white;
+}
+
+.navbar-black .navbar-header a:hover,
+.navbar-black .navbar-header span:hover,
+.navbar-black .navbar-header button:hover {
+    background-color: white;
+    color: black;
 }
 
 .navbar-black .navbar-header button {

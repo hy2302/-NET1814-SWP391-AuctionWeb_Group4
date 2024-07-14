@@ -1,0 +1,150 @@
+.screen-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin-bottom: 50px;
+    margin-top: 40px;
+    min-height: 800px;
+}
+
+.search-bar {
+    margin-top: 30px;
+    margin-left: 10px;
+    padding: 10px;
+    background-color: white;
+    width: 45%;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 18px;
+}
+
+.search-bar input.filled {
+    color: black;
+}
+
+.selection-box {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+    margin-left: 40px;
+}
+
+.selection-box label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.selection-box input[type="checkbox"] {
+    margin-right: 15px;
+    background-color: white;
+}
+
+.screen-content {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sort-sidebar {
+    margin-top: 20px;
+    background-color: #bea5d6;
+    flex: 1;
+    max-width: 200px;
+    height: 430px;
+    padding: 20px 40px 0px 40px;
+    border-radius: 10px;
+    margin-left: 50px;
+}
+
+.sort-sidebar h4 {
+    font-size: 23px;
+}
+
+.sort-sidebar label {
+    margin-top: 5px;
+}
+
+.price-range {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.price-range h4 {
+    margin-bottom: 10px;
+}
+
+.jewelry-categories {
+    margin-bottom: 20px;
+}
+
+.jewelry-content {
+    flex: 3;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-left: 170px;
+    margin-top: 20px;
+}
+
+.item-card {
+    width: 230px;
+    height: 330px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-card:hover {
+    transform: scale(1.1);
+}
+
+.item-details {
+    padding: 10px;
+    text-align: center;
+}
+
+.item-details p {
+    color: black;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.load-more-button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    margin-left: 840px;
+}
+
+.jewelry-status button{
+    background-color: transparent;
+    color: gray;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.jewelry-status button.active {
+    color: black;
+    border: none;
+}
+
+.jewelry-status {
+    display: flex;
+    max-width: fit-content;
+    height: 40px;
+    margin-left: 860px;
+    margin-top: 30px;
+    font-size: 17px;
+}

@@ -11,7 +11,7 @@
 }
 
 .work-section-top h2 {
-    color: black;
+    color: rgb(70, 66, 66);
     font-size: 30px;
     margin: 10px 0;
 }
@@ -77,7 +77,7 @@
 }
 
 .work-section-info:hover img {
-    transform: translateY(-10px);
+    transform: translateY(-28px);
 }
 
 .work-section-info h2 {

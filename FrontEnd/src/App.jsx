@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react"
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import './App.css'
 import Navbar from './components/Navbar/Navbar'
 import Home from './components/Home/Home.jsx'
 import Footer from './components/HeaderFooter/MainFooter.jsx'
-import AuctionViewUser from './components/AuctionView/AuctionViewUser.jsx'
 import JewelryView from "./components/AuctionView/JewelryView.jsx"
+import AuctionMainPage from "./components/AuctionView/AuctionMainPage.jsx"
+import JewelryDetail from "./components/AuctionView/JewelryDetail.jsx"
+import ScrollToTop from "./utils/ScrollToTop.jsx"
 
 function App() {
     const [nav, setNav] = useState(true);
+    const location = useLocation();
+    const showSlider = !location.pathname.includes('/auctionmain') && !location.pathname.includes('/jewelrydetail');
 
     const changeNavBackground = () => {
         if (window.scrollY >= 150) {
@@ -16,7 +20,7 @@ function App() {
         } else {
             setNav(true);
         }
-    }
+    };
 
     useEffect(() => {
         window.addEventListener('scroll', changeNavBackground);
@@ -27,15 +31,17 @@ function App() {
 
     return (
         <>
-            <Navbar nav={nav} />
+            <ScrollToTop />
+            <Navbar nav={nav} showSlider={showSlider} />
             <Routes>
                 <Route path="/*" element={<Home />} />
-                <Route path="/auctionviewuser" element={<AuctionViewUser />} />
+                <Route path="/auctionmain" element={<AuctionMainPage />} />
                 <Route path="/jewelryview" element={<JewelryView />} />
+                <Route path="/jewelrydetail/:id" element={<JewelryDetail />} />
             </Routes>
             <Footer />
         </>
-    )
+    );
 }
 
 export default App

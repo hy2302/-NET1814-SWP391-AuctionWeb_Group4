@@ -36,7 +36,7 @@
 }
 
 .policy-section-text h2 {
-    color: black;
+    color: rgb(70, 66, 66);
     font-size: 30px;
     margin: 10px 0;
 }
@@ -48,5 +48,5 @@
 
 .discover-btn {
     margin-top: 20px;
-    background-color: rgb(92, 86, 86);
+    background-color: rgb(109, 104, 104);
 }

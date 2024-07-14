@@ -4,7 +4,7 @@ const ProtectedRoutes = () => {
     const token = localStorage.getItem('token');
     const user = JSON.parse(localStorage.getItem('user'));
     if (token && user) {
-        if (user.role.roleName === 'admin') {
+        if (user.roleId === 1) {
             return <Outlet />;
         } else {
             return <Navigate to="/*" />;
