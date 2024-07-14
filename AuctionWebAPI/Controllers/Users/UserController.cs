@@ -154,5 +154,27 @@ namespace AuctionWebAPI.Controllers.Users
             return Ok(model);
 
         }
+    
+    [Authorize]
+    [HttpPut]
+    [Route("UpdateUserProfile")]
+    public IActionResult UpdateUserProfile([FromBody] UserDTO userProfileUpdateDTO)
+    {
+        var userId = int.Parse(User.FindFirst("UserId").Value);
+        var user = dbContext.Users.FirstOrDefault(x => x.UserId == userId);
+
+        if (user != null)
+        {
+            user.Email = userProfileUpdateDTO.Email;
+            user.Number = userProfileUpdateDTO.Number;
+            user.Address = userProfileUpdateDTO.Address;
+            dbContext.SaveChanges();
+            return Ok("User profile updated successfully");
+        }
+        else
+        {
+            return NotFound("User not found.");
+        }
     }
+}
 }
