@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import ChartView from './ChartView';
 import Users from './Users';
@@ -66,18 +66,35 @@ const Dashboard = () => {
     };
 
     return (
-        <div className={`dashboard ${sidebarOpen ? 'sidebar-open' : 'sidebar-close'}`}>
-            <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
-            <div className="main-container">
-                <div className="income-summary">
-                    <div className="income-card">
-                        <h2>Previous Month Income</h2>
-                        <p>Total Income: ${incomeData.previousMonthIncome.toFixed(2)}</p>
+        <Router>
+            <div className={`dashboard ${sidebarOpen ? 'sidebar-open' : 'sidebar-close'}`}>
+                <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+                <div className="main-container">
+                    <div className="income-summary">
+                        <div className="income-card">
+                            <h2>Previous Month Income</h2>
+                            <p>Total Income: ${incomeData.previousMonthIncome.toFixed(2)}</p>
+                        </div>
+                        <div className="income-card">
+                            <h2>Current Month Income</h2>
+                            <p>Total Income: ${incomeData.currentMonthIncome.toFixed(2)}</p>
+                        </div>
                     </div>
-                    <div className="income-card">
-                        <h2>Current Month Income</h2>
-                        <p>Total Income: ${incomeData.currentMonthIncome.toFixed(2)}</p>
+                    <div className="fee-summary">
+                        <div className="fee-card">
+                            <h2>Previous Month Transaction Fee</h2>
+                            <p>Total Transaction Fee: ${incomeData.previousMonthFee.toFixed(2)}</p>
+                        </div>
+                        <div className="fee-card">
+                            <h2>Current Month Transaction Fee</h2>
+                            <p>Total Transaction Fee: ${incomeData.currentMonthFee.toFixed(2)}</p>
+                        </div>
                     </div>
+                    <Routes>
+                        <Route path="/" element={<ChartView />} />
+                        <Route path="/users" element={<Users />} />
+                        <Route path="/histories" element={<Histories />} />
+                    </Routes>
                 </div>
                 <div className="fee-summary">
                     <div className="fee-card">
@@ -94,7 +111,7 @@ const Dashboard = () => {
                     <Route path="/users" element={<Users />} />
                 </Routes>
             </div>
-        </div>
+        </Router>
     );
 };
 

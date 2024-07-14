@@ -18,9 +18,21 @@ const PieChart = () => {
 
   const fetchPieChartData = async () => {
     try {
-      const response = await fetch('http://localhost:5074/api/Admin/dashboard');
+      const response = await fetch('http://localhost:5074/api/admin/dashboard');
       const data = await response.json();
-      setChartData(data);
+      setChartData({
+        labels: ['Users', 'Jewelries'],
+        datasets: [
+          {
+            label: 'Counts',
+            data: [data.UserCount, data.JewelryCount],
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.6)',
+              'rgba(54, 162, 235, 0.6)',
+            ],
+          },
+        ],
+      });
     } catch (error) {
       console.error('Error fetching pie chart data:', error);
     }

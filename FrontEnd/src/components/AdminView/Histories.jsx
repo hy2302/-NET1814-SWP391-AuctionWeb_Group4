@@ -12,9 +12,9 @@ const Histories = () => {
 
     const fetchHistories = async () => {
         try {
-            const transactionsResponse = await fetch('http://localhost:5074/api/Transactions');
-            const transactionsData = await transactionsResponse.json();
-            setTransactions(transactionsData);
+            const response = await fetch('http://localhost:5074/api/Transaction');
+            const data = await response.json();
+            setTransactions(data);
         } catch (error) {
             console.error('Error fetching histories:', error);
         }
@@ -30,23 +30,19 @@ const Histories = () => {
                     <table className="history-table">
                         <thead>
                             <tr>
-                                <th>Date</th>
                                 <th>Auction ID</th>
                                 <th>User ID</th>
                                 <th>Total Amount</th>
                                 <th>Transaction Fee</th>
-                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             {transactions.map(transaction => (
-                                <tr key={transaction.id}>
-                                    <td>{transaction.date}</td>
-                                    <td>{transaction.auction_id}</td>
-                                    <td>{transaction.user_id}</td>
-                                    <td>${transaction.total_amount}</td>
-                                    <td>${transaction.transaction_fee}</td>
-                                    <td>{transaction.status}</td>
+                                <tr key={transaction.TransactionId}>
+                                    <td>{transaction.AuctionId}</td>
+                                    <td>{transaction.UserId}</td>
+                                    <td>${transaction.TotalAmount}</td>
+                                    <td>${transaction.TransactionFee}</td>
                                 </tr>
                             ))}
                         </tbody>

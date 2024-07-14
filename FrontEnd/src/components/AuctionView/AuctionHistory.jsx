@@ -9,7 +9,7 @@ const AuctionHistory = () => {
 
     const fetchAuctionHistory = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/Auction/history');
+            const response = await fetch('http://localhost:5074/api/Auction');
             const data = await response.json();
             setAuctionHistory(data);
         } catch (error) {
@@ -23,7 +23,10 @@ const AuctionHistory = () => {
             <ul>
                 {auctionHistory.map(auction => (
                     <li key={auction.AuctionId}>
-                        {auction.JewelryId} - {auction.StartTime} to {auction.EndTime} - {auction.FinalPrice}
+                        Jewelry ID: {auction.JewelryId} | 
+                        Start Time: {new Date(auction.StartTime).toLocaleString()} | 
+                        End Time: {new Date(auction.EndTime).toLocaleString()} | 
+                        Final Price: {auction.FinalPrice}
                     </li>
                 ))}
             </ul>

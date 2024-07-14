@@ -25,7 +25,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/Admin/users');
+            const response = await fetch('http://localhost:5074/api/admin/users');
             const data = await response.json();
             setUsers(data);
         } catch (error) {
@@ -35,16 +35,20 @@ const Users = () => {
 
     const handleCreate = async (user) => {
         try {
-            const response = await fetch('http://localhost:5074/Admin/users', {
+            const response = await fetch('http://localhost:5074/api/admin/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(user),
             });
-            const newUser = await response.json();
-            setUsers([...users, newUser]);
-            setIsModalOpen(false);
+            if (response.ok) {
+                const newUser = await response.json();
+                setUsers([...users, newUser]);
+                setIsModalOpen(false);
+            } else {
+                console.error('Error creating user:', response.statusText);
+            }
         } catch (error) {
             console.error('Error creating user:', error);
         }
@@ -52,17 +56,21 @@ const Users = () => {
 
     const handleEdit = async (user) => {
         try {
-            const response = await fetch(`http://localhost:5074/api/Admin/users/${user.id}`, {
+            const response = await fetch(`http://localhost:5074/api/admin/users/${user.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(user),
             });
-            const updatedUser = await response.json();
-            setUsers(users.map(u => (u.id === updatedUser.id ? updatedUser : u)));
-            setIsEditing(false);
-            setIsModalOpen(false);
+            if (response.ok) {
+                const updatedUser = await response.json();
+                setUsers(users.map(u => (u.id === updatedUser.id ? updatedUser : u)));
+                setIsEditing(false);
+                setIsModalOpen(false);
+            } else {
+                console.error('Error updating user:', response.statusText);
+            }
         } catch (error) {
             console.error('Error updating user:', error);
         }
@@ -70,8 +78,12 @@ const Users = () => {
 
     const handleDelete = async (userId) => {
         try {
-            await fetch(`http://localhost:5074/api/Admin/users/${userId}`, { method: 'DELETE' });
-            setUsers(users.filter(user => user.id !== userId));
+            const response = await fetch(`http://localhost:5074/api/admin/users/${userId}`, { method: 'DELETE' });
+            if (response.ok) {
+                setUsers(users.filter(user => user.id !== userId));
+            } else {
+                console.error('Error deleting user:', response.statusText);
+            }
         } catch (error) {
             console.error('Error deleting user:', error);
         }
