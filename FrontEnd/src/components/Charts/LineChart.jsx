@@ -30,9 +30,34 @@ const LineChart = () => {
 
   const fetchLineChartData = async () => {
     try {
-      const response = await fetch('http://localhost:5074/api/Admin/dashboard');
+      const response = await fetch('http://localhost:5074/api/admin/dashboard');
       const data = await response.json();
-      setChartData(data);
+      setChartData({
+        labels: ['Now', 'Last Month'],
+        datasets: [
+          {
+            label: 'Total Amount',
+            data: [data.TotalAmountNow, data.TotalAmountLastMonth],
+            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            fill: true,
+          },
+          {
+            label: 'Transaction Fee',
+            data: [data.TransactionFeeNow, data.TransactionFeeLastMonth],
+            borderColor: 'rgba(255, 159, 64, 1)',
+            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+            fill: true,
+          },
+          {
+            label: 'Final Price',
+            data: [data.FinalPriceNow, data.FinalPriceLastMonth],
+            borderColor: 'rgba(153, 102, 255, 1)',
+            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+            fill: true,
+          },
+        ],
+      });
     } catch (error) {
       console.error('Error fetching line chart data:', error);
     }

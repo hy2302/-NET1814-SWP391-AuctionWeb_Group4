@@ -18,6 +18,9 @@ const AuctionViewManager = () => {
     const fetchItems = async () => {
         try {
             const response = await fetch('http://localhost:5074/api/Jewelry');
+            if (!response.ok) {
+                throw new Error('Failed to fetch items');
+            }
             const data = await response.json();
             setItems(data);
         } catch (error) {
@@ -27,7 +30,10 @@ const AuctionViewManager = () => {
 
     const fetchEmployees = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/Employees');
+            const response = await fetch('http://localhost:5074/api/Admin/users');
+            if (!response.ok) {
+                throw new Error('Failed to fetch employees');
+            }
             const data = await response.json();
             setEmployees(data);
         } catch (error) {
@@ -35,31 +41,75 @@ const AuctionViewManager = () => {
         }
     };
 
-    const handleItemUpdate = (updatedItem) => {
-        setItems((prevItems) => prevItems.map(item => item.JewelryId === updatedItem.JewelryId ? updatedItem : item));
+    const handleItemUpdate = async (updatedItem) => {
+        try {
+            const response = await fetch(`http://localhost:5074/api/Jewelry/${updatedItem.JewelryId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedItem),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update item');
+            }
+            setItems((prevItems) =>
+                prevItems.map((item) =>
+                    item.JewelryId === updatedItem.JewelryId ? updatedItem : item
+                )
+            );
+        } catch (error) {
+            console.error('Error updating item:', error);
+        }
     };
 
     const handleItemDelete = async (itemId) => {
         try {
-            await fetch(`http://localhost:5074/api/Jewelry/${itemId}`, {
-                method: 'DELETE'
+            const response = await fetch(`http://localhost:5074/api/Jewelry/${itemId}`, {
+                method: 'DELETE',
             });
-            setItems((prevItems) => prevItems.filter(item => item.JewelryId !== itemId));
+            if (!response.ok) {
+                throw new Error('Failed to delete item');
+            }
+            setItems((prevItems) => prevItems.filter((item) => item.JewelryId !== itemId));
         } catch (error) {
             console.error('Error deleting item:', error);
         }
     };
 
-    const handleEmployeeUpdate = (updatedEmployee) => {
-        setEmployees((prevEmployees) => prevEmployees.map(emp => emp.EmployeeId === updatedEmployee.EmployeeId ? updatedEmployee : emp));
+    const handleEmployeeUpdate = async (updatedEmployee) => {
+        try {
+            const response = await fetch(`http://localhost:5074/api/Admin/users/${updatedEmployee.UserId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(updatedEmployee),
+            });
+            if (!response.ok) {
+                throw new Error('Failed to update employee');
+            }
+            setEmployees((prevEmployees) =>
+                prevEmployees.map((emp) =>
+                    emp.UserId === updatedEmployee.UserId ? updatedEmployee : emp
+                )
+            );
+        } catch (error) {
+            console.error('Error updating employee:', error);
+        }
     };
 
-    const handleEmployeeDelete = async (employeeId) => {
+    const handleEmployeeDelete = async (userId) => {
         try {
-            await fetch(`http://localhost:5074/api/Employees/${employeeId}`, {
-                method: 'DELETE'
+            const response = await fetch(`http://localhost:5074/api/Admin/users/${userId}`, {
+                method: 'DELETE',
             });
-            setEmployees((prevEmployees) => prevEmployees.filter(emp => emp.EmployeeId !== employeeId));
+            if (!response.ok) {
+                throw new Error('Failed to delete employee');
+            }
+            setEmployees((prevEmployees) =>
+                prevEmployees.filter((emp) => emp.UserId !== userId)
+            );
         } catch (error) {
             console.error('Error deleting employee:', error);
         }
