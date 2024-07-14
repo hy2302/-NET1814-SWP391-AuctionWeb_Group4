@@ -1,40 +1,51 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
 import Typography from '@mui/material/Typography'
+import axios from 'axios'
 import './AuctionMainPage.css'
 
 const MAX = 1000;
 const MIN = 0;
 const marks = [
-    {
-        value: MIN,
-        label: '',
-    },
-    {
-        value: MAX,
-        label: '',
-    },
-];
-
-const jewelries = [
-    { id: 1, name: 'Diamond Ring', category: 'Diamond', price: 300.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Ended Soon' },
-    { id: 2, name: 'Ruby Ring', category: 'Ruby', price: 150.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Ended Soon' },
-    { id: 3, name: 'Silver Necklace', category: 'Silver', price: 250.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Upcoming' },
-    { id: 4, name: 'Topaz Ring', category: 'Topaz', price: 180.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'In Process' },
-    { id: 5, name: 'Gold Pendant', category: 'Gold', price: 400.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'In Process' },
-    { id: 6, name: 'Ruby Pendant', category: 'Ruby', price: 230.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Upcoming' },
-    { id: 7, name: 'Gold Bracelet', category: 'Gold', price: 280.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Upcoming' },
-    { id: 8, name: 'Silver Ring', category: 'Silver', price: 100.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Ended Soon' },
-    { id: 9, name: 'Emerald Gem', category: 'Emerald', price: 350.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180', status: 'Upcoming' },
+    { value: MIN, label: '' },
+    { value: MAX, label: '' },
 ];
 
 const statusOptions = ['All', 'Upcoming', 'In Process', 'Ended Soon'];
 
 const AuctionMainPage = () => {
+    const navigate = useNavigate();
     const [val, setVal] = useState(MIN);
+    const [jewelries, setJewelries] = useState([]);
+    const [jewelryTypes, setJewelryTypes] = useState([]);
     const [visibleItems, setVisibleItems] = useState(6);
     const [selectedStatus, setSelectedStatus] = useState('All');
+    const [selectedCategories, setSelectedCategories] = useState([]);
+
+    useEffect(() => {
+        const fetchJewelries = async () => {
+            try {
+                const response = await axios.get('http://localhost:5074/api/Jewelry');
+                setJewelries(response.data);
+            } catch (error) {
+                alert('Failed to fetch jewelry data.');
+            }
+        };
+
+        const fetchJewelryTypes = async () => {
+            try {
+                const response = await axios.get('http://localhost:5074/api/JewelryType');
+                setJewelryTypes(response.data);
+            } catch (error) {
+                alert('Failed to fetch jewelry types.');
+            }
+        };
+
+        fetchJewelries();
+        fetchJewelryTypes();
+    }, []);
 
     const handleChange = (_, newValue) => {
         setVal(newValue);
@@ -44,18 +55,44 @@ const AuctionMainPage = () => {
         setSelectedStatus(status);
     };
 
+    const handleCategoryChange = (event) => {
+        const { value, checked } = event.target;
+
+        if (checked) {
+            setSelectedCategories([...selectedCategories, value]);
+        } else {
+            setSelectedCategories(selectedCategories.filter(category => category !== value));
+        }
+    };
+
+    const getJewelryTypeName = (typeId) => {
+        const type = jewelryTypes.find(type => type.jewelryTypeId === typeId);
+        return type ? type.jewelryTypeName : 'Unknown';
+    };
+
     const handleLoadMore = () => {
-        setVisibleItems((prevVisibleItems) => prevVisibleItems + 6);
+        setVisibleItems(prevVisibleItems => prevVisibleItems + 6);
     };
 
     const filteredJewelries = selectedStatus === 'All'
-        ? jewelries
-        : jewelries.filter(jewelries => jewelries.status === selectedStatus);
+        ? jewelries.filter(item => selectedCategories.length === 0 || selectedCategories.includes(getJewelryTypeName(item.jewelryTypeId)))
+        : jewelries.filter(item => item.status === selectedStatus && (selectedCategories.length === 0 || selectedCategories.includes(getJewelryTypeName(item.jewelryTypeId))));
 
     return (
         <div className="screen-container">
             <div className="screen-header">
                 <input className="search-bar" type="text" placeholder="Enter the auction keyword" />
+                <div className="jewelry-status">
+                        {statusOptions.map(status => (
+                            <button
+                                key={status}
+                                className={selectedStatus === status ? 'active' : ''}
+                                onClick={() => handleStatusChangeClick(status)}
+                            >
+                                {status}
+                            </button>
+                        ))}
+                    </div>
             </div>
             <div className="screen-content">
                 <div className="sort-sidebar">
@@ -72,20 +109,20 @@ const AuctionMainPage = () => {
                                 onChange={handleChange}
                             />
                             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                            <Typography
-                                variant="body2"
-                                onClick={() => setVal(MIN)}
-                                sx={{ cursor: 'pointer' }}
-                            >
-                                ${MIN}
-                            </Typography>
-                            <Typography
-                                variant="body2"
-                                onClick={() => setVal(MAX)}
-                                sx={{ cursor: 'pointer' }}
-                            >
-                                ${MAX}
-                            </Typography>
+                                <Typography
+                                    variant="body2"
+                                    onClick={() => setVal(MIN)}
+                                    sx={{ cursor: 'pointer' }}
+                                >
+                                    ${MIN}
+                                </Typography>
+                                <Typography
+                                    variant="body2"
+                                    onClick={() => setVal(MAX)}
+                                    sx={{ cursor: 'pointer' }}
+                                >
+                                    ${MAX}
+                                </Typography>
                             </Box>
                         </Box>
                     </div>
@@ -93,58 +130,47 @@ const AuctionMainPage = () => {
                         <h4>Categories</h4>
                         <div className='selection-box'>
                             <label>
-                                <input type="checkbox" name="category" value="Diamond" />
+                                <input type="checkbox" name="category" value="Diamond" onChange={handleCategoryChange} />
                                 Diamond
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="Ruby" />
+                                <input type="checkbox" name="category" value="Ruby" onChange={handleCategoryChange} />
                                 Ruby
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="Silver" />
+                                <input type="checkbox" name="category" value="Silver" onChange={handleCategoryChange} />
                                 Silver
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="Gold" />
+                                <input type="checkbox" name="category" value="Gold" onChange={handleCategoryChange} />
                                 Gold
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="Topaz" />
+                                <input type="checkbox" name="category" value="Topaz" onChange={handleCategoryChange} />
                                 Topaz
                             </label>
                             <label>
-                                <input type="checkbox" name="category" value="Emerald" />
-                                Emerald
+                                <input type="checkbox" name="category" value="Others" onChange={handleCategoryChange} />
+                                Others
                             </label>
                         </div>
                     </div>
                 </div>
                 <div className="jewelry-content">
-                    <div className="jewelry-status">
-                        {statusOptions.map(status => (
-                            <button
-                                key={status}
-                                className={selectedStatus === status ? 'active' : ''}
-                                onClick={() => handleStatusChangeClick(status)}
-                            >
-                            {status}
-                            </button>
-                        ))}
-                    </div>
                     {filteredJewelries.slice(0, visibleItems).map((item) => (
-                    <div className="item-card" key={item.id}>
-                        <img className="item-image" src={item.image} alt={item.name} />
-                        <div className="item-details">
-                            <p>{item.name}</p>
-                            <p>Current Price: ${item.price.toFixed(2)}</p>
-                            <p>{item.status}</p>
+                        <div className="item-card" key={item.jewelryId} onClick={() => navigate(`/jewelrydetail/${item.jewelryId}`)}>
+                            <img className="item-image" src="https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180" alt={item.jewelryName} />
+                            <div className="item-details">
+                                <p className='item-name'>{item.jewelryName}</p>
+                                <p>Material: {getJewelryTypeName(item.jewelryTypeId)}</p>
+                                <p>Current Price: $</p>
+                            </div>
                         </div>
-                    </div>
                     ))}
                 </div>
             </div>
             {visibleItems < filteredJewelries.length && (
-            <button className="load-more-button" onClick={handleLoadMore}>Load more</button>
+                <button className="load-more-button" onClick={handleLoadMore}>Load more</button>
             )}
         </div>
     );

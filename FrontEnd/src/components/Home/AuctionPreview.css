@@ -68,7 +68,12 @@
 
 .jewelry-card img {
     width: 100%;
-    height: auto;
+    height: 180px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.jewelry-card img:hover {
+    transform: scale(1.1);
 }
 
 .jewelry-card h2 {

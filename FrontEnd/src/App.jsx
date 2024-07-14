@@ -6,10 +6,13 @@ import Home from './components/Home/Home.jsx'
 import Footer from './components/HeaderFooter/MainFooter.jsx'
 import JewelryView from "./components/AuctionView/JewelryView.jsx"
 import AuctionMainPage from "./components/AuctionView/AuctionMainPage.jsx"
+import JewelryDetail from "./components/AuctionView/JewelryDetail.jsx"
+import ScrollToTop from "./utils/ScrollToTop.jsx"
 
 function App() {
     const [nav, setNav] = useState(true);
     const location = useLocation();
+    const showSlider = !location.pathname.includes('/auctionmain') && !location.pathname.includes('/jewelrydetail');
 
     const changeNavBackground = () => {
         if (window.scrollY >= 150) {
@@ -28,11 +31,13 @@ function App() {
 
     return (
         <>
-            <Navbar nav={nav} showSlider={!location.pathname.includes('/auctionmain')} />
+            <ScrollToTop />
+            <Navbar nav={nav} showSlider={showSlider} />
             <Routes>
                 <Route path="/*" element={<Home />} />
                 <Route path="/auctionmain" element={<AuctionMainPage />} />
                 <Route path="/jewelryview" element={<JewelryView />} />
+                <Route path="/jewelrydetail/:id" element={<JewelryDetail />} />
             </Routes>
             <Footer />
         </>

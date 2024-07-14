@@ -46,23 +46,31 @@ function Login() {
             const response = await axios.post('http://localhost:5074/api/User/Login', loginData, {
                 headers: { 'Content-Type': 'application/json' }
             });
-            const data = response.data;
-            if (data.token) {
-                localStorage.setItem('token', data.token);
-                localStorage.setItem('user', JSON.stringify(data.user));
-                if (data.user.role.roleName === 'admin') {
-                    navigate('/dashboard');
+    
+            if (response.status === 200) {
+                const data = response.data;
+                if (data.token && data.user) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+    
+                    if (data.user.roleId === 1) {
+                        navigate('/dashboard');
+                    } else {
+                        navigate('/*');
+                    }
                 } else {
-                    navigate('/*');
+                    console.error('Unexpected data structure:', data);
+                    alert('Login failed: Unexpected response from server.');
                 }
             } else {
-                alert(data.message);
+                alert('Login failed: Invalid credentials.');
             }
         } catch (error) {
             console.error('Error:', error);
             alert('An error occurred. Please try again later.');
         }
     };
+    
 
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
