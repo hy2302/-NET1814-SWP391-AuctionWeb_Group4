@@ -5,7 +5,7 @@ import '../Navbar/Navbar.css'
 import ImageSlider from '../Home/ImageSlider'
 import Dropdown from 'react-bootstrap/Dropdown'
 
-const Navbar = ({ nav }) => {
+const Navbar = ({ nav, showSlider }) => {
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [click, setClick] = useState(false);
@@ -48,12 +48,14 @@ const Navbar = ({ nav }) => {
 
     return (
         <div className={`navbar ${nav ? 'navbar-transparent' : 'navbar-black'}`}>
-            <div className="slider-container" style={containerStyles}>
-                <ImageSlider slides={slides} parentWidth={1520} />
-            </div>
+            {showSlider && (
+                <div className="slider-container" style={containerStyles}>
+                    <ImageSlider slides={slides} parentWidth={1520} />
+                </div>
+            )}
             <div className='navbar-header'>
                 <span onClick={handleHomeClick}>Home</span>
-                <span onClick={() => navigate('/jewelryview')}>Auction</span>
+                <span onClick={() => navigate('/auctionmain')}>Auction</span>
                 <Link to="policy" spy={true} smooth={true} offset={-100} duration={500} onSetActive={setClick}>Policy</Link>
                 <Link to="about" spy={true} smooth={true} offset={-100} duration={500} onSetActive={setClick}>About</Link>
                 {isLoggedIn ? (

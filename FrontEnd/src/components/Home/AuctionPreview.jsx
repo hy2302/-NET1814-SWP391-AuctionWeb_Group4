@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './AuctionPreview.css'
 
-const products = [
+const jewelries = [
     { id: 1, name: 'Diamond Ring', category: 'Diamond', price: 30.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180' },
     { id: 2, name: 'Ruby Ring', category: 'Ruby', price: 30.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180' },
     { id: 3, name: 'Sliver Necklace', category: 'Sliver', price: 30.00, image: 'https://tse4.mm.bing.net/th?id=OIP.P0udrBXOIIMIc6KeA5qkkwAAAA&pid=Api&P=0&h=180' },
@@ -28,8 +28,8 @@ function AuctionPreview() {
     };
 
     const filteredProducts = selectedCategory === 'General'
-        ? products
-        : products.filter(product => product.category === selectedCategory);
+        ? jewelries
+        : jewelries.filter(jewelries => jewelries.category === selectedCategory);
 
     const totalSet = Math.ceil(filteredProducts.length / 4);
     const currentJewelries = filteredProducts.slice(currentSet * maxPerLine, (currentSet + 1) * maxPerLine);
@@ -60,23 +60,20 @@ function AuctionPreview() {
                         {category}
                     </button>
                 ))}
+                <button onClick={() => navigate('/auctionmain')}><span>...</span></button>
+
             </div>
             <div className="jewelry-list-container">
                 <button onClick={handlePrevPage} disabled={currentSet === 0}>❰</button>
                 <div className="jewelry-list">
-                    {currentJewelries.map(product => (
-                        <div key={product.id} className="jewelry-card">
-                            <img src={product.image} alt={product.name} />
-                            <h2>{product.name}</h2>
-                            <p>{product.category}</p>
-                            <p><span className="start-price">Start price: </span>${product.price.toFixed(2)}</p>
+                    {currentJewelries.map(jewelries => (
+                        <div key={jewelries.id} className="jewelry-card">
+                            <img src={jewelries.image} alt={jewelries.name} />
+                            <h2>{jewelries.name}</h2>
+                            <p>{jewelries.category}</p>
+                            <p><span className="start-price">Start price: </span>${jewelries.price.toFixed(2)}</p>
                         </div>
                     ))}
-                    {currentSet === totalSet - 1 && (
-                        <div className="view-more-container">
-                            <button onClick={() => navigate('/jewelryview')}><span>...</span></button>
-                        </div>
-                    )}
                 </div>
                 <button onClick={handleNextPage} disabled={currentSet === totalSet - 1}>❱</button>
             </div>
