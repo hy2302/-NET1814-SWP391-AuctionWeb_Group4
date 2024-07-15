@@ -1,11 +1,14 @@
+.histories-container {
+  min-height: 800px;
+}
+
 .histories {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center the content horizontally */
+  align-items: center;
 }
 
 .histories h1 {
@@ -58,7 +61,12 @@
 }
 
 .history-table td {
-  color: #333;
+  color: black;
+  background-color: white;
+}
+
+.history-table td:hover {
+  background-color: #a3bdf3;
 }
 
 .button {

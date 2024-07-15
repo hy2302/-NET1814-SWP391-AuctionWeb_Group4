@@ -21,7 +21,7 @@ const Histories = () => {
     };
 
     return (
-        <div>
+        <div className='histories-container'>
             <div className="histories">
                 <h1>History</h1>
                 <button className="back-button" onClick={() => navigate('/Dashboard')}>Back to Dashboard</button>
@@ -38,11 +38,11 @@ const Histories = () => {
                         </thead>
                         <tbody>
                             {transactions.map(transaction => (
-                                <tr key={transaction.TransactionId}>
-                                    <td>{transaction.AuctionId}</td>
-                                    <td>{transaction.UserId}</td>
-                                    <td>${transaction.TotalAmount}</td>
-                                    <td>${transaction.TransactionFee}</td>
+                                <tr key={transaction.transactionId}>
+                                    <td>{transaction.auctionId}</td>
+                                    <td>{transaction.userId}</td>
+                                    <td>${transaction.totalAmount}</td>
+                                    <td>${transaction.transactionFee}</td>
                                 </tr>
                             ))}
                         </tbody>

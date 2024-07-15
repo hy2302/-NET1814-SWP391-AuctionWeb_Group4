@@ -14,6 +14,19 @@ function App() {
     const location = useLocation();
     const showSlider = !location.pathname.includes('/auctionmain') && !location.pathname.includes('/jewelrydetail');
 
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+    
     const changeNavBackground = () => {
         if (window.scrollY >= 150) {
             setNav(false);
