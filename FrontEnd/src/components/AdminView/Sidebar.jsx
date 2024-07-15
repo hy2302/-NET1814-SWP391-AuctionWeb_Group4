@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../Layouts/Sidebar.css'
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-    const navigate = useNavigate();
     return (
         <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
             {isOpen && (
@@ -15,10 +14,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <div className="sidebar-component">
                         <ul>
                             <li>
-                                <span onClick={() => navigate('/users')}>Users</span>
+                                <Link to="/users">Users</Link>
                             </li>
                             <li>
-                                <Link to="/*">Back to Main</Link>
+                                <Link to="/histories">Histories</Link>
+                            </li>
+                            <li>
+                                <Link to="/*">Back to main</Link>
                             </li>
                         </ul>
                     </div>
@@ -33,4 +35,4 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     );
 };
 
-export default Sidebar
+export default Sidebar;

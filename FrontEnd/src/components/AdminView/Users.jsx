@@ -25,7 +25,7 @@ const Users = () => {
 
     const fetchUsers = async () => {
         try {
-            const response = await fetch('http://localhost:5074/api/admin/users');
+            const response = await fetch('http://localhost:5074/api/Admin/users');
             const data = await response.json();
             setUsers(data);
         } catch (error) {
@@ -35,7 +35,7 @@ const Users = () => {
 
     const handleCreate = async (user) => {
         try {
-            const response = await fetch('http://localhost:5074/api/admin/users', {
+            const response = await fetch('http://localhost:5074/api/Admin/users', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ const Users = () => {
 
     const handleEdit = async (user) => {
         try {
-            const response = await fetch(`http://localhost:5074/api/admin/users/${user.id}`, {
+            const response = await fetch(`http://localhost:5074/api/Admin/users/${user.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -78,7 +78,9 @@ const Users = () => {
 
     const handleDelete = async (userId) => {
         try {
-            const response = await fetch(`http://localhost:5074/api/admin/users/${userId}`, { method: 'DELETE' });
+            const response = await fetch(`http://localhost:5074/api/Admin/users/${userId}`, { 
+                method: 'DELETE' 
+            });
             if (response.ok) {
                 setUsers(users.filter(user => user.id !== userId));
             } else {
@@ -112,7 +114,7 @@ const Users = () => {
     };
 
     return (
-        <div>
+        <div className='users-container'>
             <div className="users">
                 <h1>Users</h1>
                 <button className="back-button" onClick={() => navigate('/Dashboard')}>Back to Dashboard</button>
@@ -131,13 +133,13 @@ const Users = () => {
                     </thead>
                     <tbody>
                         {users.map(user => (
-                            <tr key={user.id}>
-                                <td>{user.user_name}</td>
-                                <td>{user.user_email}</td>
-                                <td>{user.contact_number}</td>
-                                <td>{user.user_address}</td>
-                                <td>{user.status}</td>
-                                <td>{user.role_id}</td>
+                            <tr key={user.userId}>
+                                <td>{user.username}</td>
+                                <td>{user.email}</td>
+                                <td>{user.number}</td>
+                                <td>{user.address}</td>
+                                <td>{user.isActive}</td>
+                                <td>{user.roleId}</td>
                                 <td>
                                     <button className="edit-button" onClick={() => openEditModal(user)}>Edit</button>
                                     <button className="delete-button" onClick={() => handleDelete(user.id)}>Delete</button>
