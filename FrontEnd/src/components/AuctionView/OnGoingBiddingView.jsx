@@ -1,6 +1,6 @@
 // OnGoingBiddingView.jsx
 import React, { useState, useEffect } from 'react';
-import apiService from './apiServiceBid';
+import apiService from '../../apiServiceBid';
 
 const OnGoingBiddingView = () => {
   const [ongoingAuctions, setOngoingAuctions] = useState([]);

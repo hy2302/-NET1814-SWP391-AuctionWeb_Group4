@@ -19,6 +19,7 @@ const AuctionMainPage = () => {
     const navigate = useNavigate();
     const [val, setVal] = useState(MIN);
     const [jewelries, setJewelries] = useState([]);
+    const [auctions, setAuctions] = useState({});
     const [jewelryTypes, setJewelryTypes] = useState([]);
     const [visibleItems, setVisibleItems] = useState(6);
     const [selectedStatus, setSelectedStatus] = useState('All');
@@ -46,6 +47,27 @@ const AuctionMainPage = () => {
         fetchJewelries();
         fetchJewelryTypes();
     }, []);
+
+    useEffect(() => {
+        const fetchAuction = async (jewelryId) => {
+            try {
+                const response = await axios.get(`http://localhost:5074/api/Auction/ByJewelryId/${jewelryId}`);
+                setAuctions(prevAuctions => ({
+                    ...prevAuctions,
+                    [jewelryId]: response.data || { startingPrice: 0 }
+                }));
+            } catch (error) {
+                setAuctions(prevAuctions => ({
+                    ...prevAuctions,
+                    [jewelryId]: { startingPrice: 0 }
+                }));
+            }
+        };
+
+        jewelries.forEach(jewelry => {
+            fetchAuction(jewelry.jewelryId);
+        });
+    }, [jewelries]);
 
     const handleChange = (_, newValue) => {
         setVal(newValue);
@@ -83,16 +105,16 @@ const AuctionMainPage = () => {
             <div className="screen-header">
                 <input className="search-bar" type="text" placeholder="Enter the auction keyword" />
                 <div className="jewelry-status">
-                        {statusOptions.map(status => (
-                            <button
-                                key={status}
-                                className={selectedStatus === status ? 'active' : ''}
-                                onClick={() => handleStatusChangeClick(status)}
-                            >
-                                {status}
-                            </button>
-                        ))}
-                    </div>
+                    {statusOptions.map(status => (
+                        <button
+                            key={status}
+                            className={selectedStatus === status ? 'active' : ''}
+                            onClick={() => handleStatusChangeClick(status)}
+                        >
+                            {status}
+                        </button>
+                    ))}
+                </div>
             </div>
             <div className="screen-content">
                 <div className="sort-sidebar">
@@ -163,7 +185,7 @@ const AuctionMainPage = () => {
                             <div className="item-details">
                                 <p className='item-name'>{item.jewelryName}</p>
                                 <p>Material: {getJewelryTypeName(item.jewelryTypeId)}</p>
-                                <p>Current Price: $</p>
+                                <p>Current Price: ${auctions[item.jewelryId] ? auctions[item.jewelryId].startingPrice : 0}</p>
                             </div>
                         </div>
                     ))}

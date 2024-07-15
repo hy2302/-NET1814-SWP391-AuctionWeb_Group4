@@ -8,6 +8,7 @@ import JewelryView from "./components/AuctionView/JewelryView.jsx"
 import AuctionMainPage from "./components/AuctionView/AuctionMainPage.jsx"
 import JewelryDetail from "./components/AuctionView/JewelryDetail.jsx"
 import ScrollToTop from "./utils/ScrollToTop.jsx"
+import OnGoingBiddingView from './components/AuctionView/OnGoingBiddingView.jsx'
 
 function App() {
     const [nav, setNav] = useState(true);
@@ -51,6 +52,7 @@ function App() {
                 <Route path="/auctionmain" element={<AuctionMainPage />} />
                 <Route path="/jewelryview" element={<JewelryView />} />
                 <Route path="/jewelrydetail/:id" element={<JewelryDetail />} />
+                <Route path="/ongoingbid" element={<OnGoingBiddingView />} />
             </Routes>
             <Footer />
         </>
